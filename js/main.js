@@ -7,7 +7,7 @@
  * set ALLOWED_ORIGIN, and replace the privacy-policy placeholder.
  */
 const SITE_CONFIG = Object.freeze({
-  webhookUrl: 'https://functions.yandexcloud.net/d4e67l6n2u9dlih9aoer',
+  webhookUrl: 'https://kontrakt-telegram.vkotov1830.workers.dev/',
   yandexMetricaId: null,
 });
 
