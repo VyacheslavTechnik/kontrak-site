@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+
+<html lang="ru">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<meta content="#101b2d" name="theme-color"/>
+<meta content="Информация о вакансиях по контракту, направлениях, условиях и порядке обращения. Уточните актуальные сведения у представителя организации." name="description"/>
+<meta content="website" property="og:type"/>
+<meta content="Контракт — информация о вакансиях" property="og:title"/>
+<meta content="Направления вакансий, расчётный ориентир суммы за первый год и форма заявки." property="og:description"/>
+<meta content="assets/images/hero.webp" property="og:image"/>
+<title>Контракт — информация о вакансиях и условиях</title>
+<link as="image" fetchpriority="high" href="assets/images/hero.webp" rel="preload"/>
+<link href="css/style.css" rel="stylesheet"/>
+<link href="css/animations.css" rel="stylesheet"/>
+<link href="css/responsive.css" rel="stylesheet"/>
+<script defer="" src="js/main.js"></script>
+</head>
+<body>
+<a class="skip-link" href="#main">Перейти к содержимому</a>
+<svg aria-hidden="true" class="svg-defs" xmlns="http://www.w3.org/2000/svg">
+<symbol id="i-arrow" viewbox="0 0 24 24"><path d="M5 12h14m-7-7 7 7-7 7"></path></symbol>
+<symbol id="i-message" viewbox="0 0 24 24"><path d="M20 11.5a7.5 7.5 0 0 1-7.5 7.5 8 8 0 0 1-3-.58L4 20l1.64-4.58A7.5 7.5 0 1 1 20 11.5Z"></path><path d="M9 11.5h.01m3 0h.01m3 0h.01" stroke-linecap="round" stroke-width="2.7"></path></symbol>
+<symbol id="i-cash" viewbox="0 0 24 24"><rect height="14" rx="3" width="18" x="3" y="5"></rect><path d="M3 9h18m-9 3v5m-2.5-4.5c0-1 1-1.5 2.5-1.5s2.5.5 2.5 1.5c0 2-5 1-5 3 0 1 1 1.5 2.5 1.5s2.5-.5 2.5-1.5"></path></symbol>
+<symbol id="i-calendar" viewbox="0 0 24 24"><rect height="16" rx="2" width="18" x="3" y="5"></rect><path d="M7 3v4m10-4v4M3 10h18M7 14h3m4 0h3m-10 4h3"></path></symbol>
+<symbol id="i-chart" viewbox="0 0 24 24"><path d="M4 20V12m6 8V8m6 12V4m4 16H2"></path></symbol>
+<symbol id="i-truck" viewbox="0 0 24 24"><path d="M3 6h11v12H3zM14 10h4l3 4v4h-7z"></path><circle cx="7" cy="18" r="2"></circle><circle cx="18" cy="18" r="2"></circle></symbol>
+<symbol id="i-tool" viewbox="0 0 24 24"><path d="M14 6a6 6 0 0 0-7 7L3 17l4 4 4-4a6 6 0 0 0 7-7l-4 4-4-4z"></path></symbol>
+<symbol id="i-target" viewbox="0 0 24 24"><circle cx="12" cy="12" r="9"></circle><circle cx="12" cy="12" r="5"></circle><circle cx="12" cy="12" r="1"></circle></symbol>
+<symbol id="i-radio" viewbox="0 0 24 24"><rect height="18" rx="2" width="10" x="7" y="3"></rect><path d="M10 17h4M12 7v3m-3.5 1.5a5 5 0 0 0 0 4m7-4a5 5 0 0 1 0 4"></path></symbol>
+<symbol id="i-shield" viewbox="0 0 24 24"><path d="M12 2 20 5v6c0 5-3.2 8.6-8 11-4.8-2.4-8-6-8-11V5z"></path><path d="m8.5 12 2.5 2.5 4.5-5"></path></symbol>
+<symbol id="i-users" viewbox="0 0 24 24"><circle cx="9" cy="8" r="3"></circle><path d="M3 20v-2a6 6 0 0 1 12 0v2zm13-14a3 3 0 0 1 0 6m2 3a5 5 0 0 1 3 5"></path></symbol>
+<symbol id="i-file" viewbox="0 0 24 24"><path d="M6 2h8l5 5v15H6zM14 2v5h5M9 12h7m-7 4h7"></path></symbol>
+<symbol id="i-phone" viewbox="0 0 24 24"><path d="M6 3h4l2 5-2.5 2a15 15 0 0 0 4.5 4.5l2-2.5 5 2v4a3 3 0 0 1-3.3 3C9.6 20.2 3.8 14.4 3 6.3A3 3 0 0 1 6 3Z"></path></symbol>
+<symbol id="i-pin" viewbox="0 0 24 24"><path d="M20 10c0 5-8 12-8 12S4 15 4 10a8 8 0 1 1 16 0Z"></path><circle cx="12" cy="10" r="2"></circle></symbol>
+<symbol id="i-plus" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14"></path></symbol>
+<symbol id="i-check" viewbox="0 0 24 24"><path d="m4 12 5 5L20 6"></path></symbol>
+</svg>
+<header class="site-header" id="top">
+<div class="container header-inner">
+<a aria-label="Контракт — на главную" class="brand" href="#top">
+<span class="brand-name">КОНТРАКТ<span class="brand-dot">.</span></span>
+<span class="brand-caption">ИНФОРМАЦИЯ О ВАКАНСИЯХ</span>
+</a>
+<nav aria-label="Основная навигация" class="desktop-nav">
+<a href="#vacancies">Вакансии</a><a href="#payments">Выплаты</a><a href="#steps">Как обратиться</a><a href="#faq">Вопросы</a><a href="#contacts">Контакты</a>
+</nav>
+<button class="button button--green header-cta" data-open-contact="" type="button">Оставить заявку <svg><use href="#i-arrow"></use></svg></button>
+<button aria-controls="mobile-nav" aria-expanded="false" aria-label="Открыть меню" class="menu-toggle" type="button"><span></span><span></span><span></span></button>
+</div>
+<nav aria-label="Мобильная навигация" class="mobile-nav" hidden="" id="mobile-nav">
+<a href="#vacancies">Вакансии</a><a href="#payments">Выплаты</a><a href="#steps">Как обратиться</a><a href="#faq">Вопросы</a><a href="#contacts">Контакты</a>
+<button class="button button--green" data-open-contact="" type="button">Оставить заявку</button>
+</nav>
+</header>
+<main id="main">
+<section aria-labelledby="hero-title" class="hero">
+<div aria-label="Иллюстрация: человек в военной экипировке на фоне светлого природного пейзажа" class="hero-picture" role="img"></div>
+<div class="container hero-content">
+<span class="eyebrow hero-enter" style="--enter-delay:0ms"><span class="eyebrow-line"></span> СПЕЦИАЛЬНОСТИ · УСЛОВИЯ · ИНФОРМАЦИЯ</span>
+<h1 class="hero-enter" id="hero-title" style="--enter-delay:70ms">Вакансии<br/>по контракту</h1>
+<p class="hero-lead hero-enter" style="--enter-delay:140ms">Информация о специальностях и условиях</p>
+<div aria-label="Расчётный ориентир суммы за первый год" class="annual-amount hero-enter" style="--enter-delay:210ms">
+<span class="annual-amount__label">Расчётная сумма за первый год</span>
+<strong>до 6 000 000 ₽ <span>в год</span></strong>
+<span class="annual-amount__detail">Сумма зависит от региона, должности и действующих условий</span>
+</div>
+<div class="hero-bottom hero-enter" style="--enter-delay:420ms">
+<button class="button button--green button--hero" data-open-contact="" type="button"><svg><use href="#i-message"></use></svg><span>Оставить заявку</span><svg class="button-arrow"><use href="#i-arrow"></use></svg></button>
+<p>Сумма приведена как ориентир по исходным данным проекта, не гарантирована и требует проверки по конкретной вакансии и региону.</p>
+</div>
+</div>
+</section>
+<section aria-labelledby="vacancies-title" class="section section--light vacancies-section" id="vacancies">
+<div class="container">
+<div class="section-heading reveal"><div><span class="section-kicker">НАПРАВЛЕНИЯ</span><h2 id="vacancies-title">Выберите специальность</h2><p>Ознакомьтесь с направлениями и уточните актуальные требования.</p></div></div>
+<div class="vacancy-grid">
+<article class="vacancy-card reveal"><div class="vacancy-cover vacancy-cover--photo"><img alt="Колонна грузовых автомобилей на дороге" decoding="async" height="385" loading="lazy" src="assets/images/driver.webp" width="840"/></div><div class="vacancy-body"><span class="vacancy-label">НАПРАВЛЕНИЕ 01</span><h3><a aria-label="Подробнее о вакансии: Водители BCDE" data-job="driver" href="#job-modal">Водители<br/>BCDE</a></h3><p class="vacancy-summary">Управление автомобильной техникой. Категории прав, опыт и конкретные задачи уточняются по вакансии.</p><button class="vacancy-link" aria-label="Оставить заявку: Водители BCDE" data-apply-job="driver" type="button">Оставить заявку <svg><use href="#i-arrow"></use></svg></button></div></article>
+<article class="vacancy-card reveal"><div class="vacancy-cover vacancy-cover--mechanic"><svg><use href="#i-tool"></use></svg><span class="cover-label">ТЕХНИКА</span></div><div class="vacancy-body"><span class="vacancy-label">НАПРАВЛЕНИЕ 02</span><h3><a aria-label="Подробнее о вакансии: Механики и сварщики" data-job="mechanic" href="#job-modal">Механики<br/>и сварщики</a></h3><p class="vacancy-summary">Техническое обслуживание и ремонт. Требуемая квалификация и профиль работ зависят от должности.</p><button class="vacancy-link" aria-label="Оставить заявку: Механики и сварщики" data-apply-job="mechanic" type="button">Оставить заявку <svg><use href="#i-arrow"></use></svg></button></div></article>
+<article class="vacancy-card reveal"><div class="vacancy-cover vacancy-cover--pvo"><svg><use href="#i-target"></use></svg><span class="cover-label">ПВО</span></div><div class="vacancy-body"><span class="vacancy-label">НАПРАВЛЕНИЕ 03</span><h3><a aria-label="Подробнее о вакансии: Наводчики ПВО" data-job="pvo" href="#job-modal">Наводчики<br/>ПВО</a></h3><p class="vacancy-summary">Направление в сфере противовоздушной обороны. Обязанности и требования к подготовке уточняются.</p><button class="vacancy-link" aria-label="Оставить заявку: Наводчики ПВО" data-apply-job="pvo" type="button">Оставить заявку <svg><use href="#i-arrow"></use></svg></button></div></article>
+<article class="vacancy-card reveal"><div class="vacancy-cover vacancy-cover--radio"><svg><use href="#i-radio"></use></svg><span class="cover-label">СВЯЗЬ</span></div><div class="vacancy-body"><span class="vacancy-label">НАПРАВЛЕНИЕ 04</span><h3><a aria-label="Подробнее о вакансии: Операторы РЭБ / БПЛА" data-job="radio" href="#job-modal">Операторы<br/>РЭБ / БПЛА</a></h3><p class="vacancy-summary">Направление, связанное с радиоэлектронными системами и беспилотной техникой. Условия уточняются.</p><button class="vacancy-link" aria-label="Оставить заявку: Операторы РЭБ / БПЛА" data-apply-job="radio" type="button">Оставить заявку <svg><use href="#i-arrow"></use></svg></button></div></article>
+<article class="vacancy-card reveal"><div class="vacancy-cover vacancy-cover--guard"><svg><use href="#i-shield"></use></svg><span class="cover-label">ОХРАНА</span></div><div class="vacancy-body"><span class="vacancy-label">НАПРАВЛЕНИЕ 05</span><h3><a aria-label="Подробнее о вакансии: Охранники- стрелки" data-job="guard" href="#job-modal">Охранники-<br/>стрелки</a></h3><p class="vacancy-summary">Направление, связанное с охраной объектов. Обязанности, допуски и требования уточняются.</p><button class="vacancy-link" aria-label="Оставить заявку: Охранники-стрелки" data-apply-job="guard" type="button">Оставить заявку <svg><use href="#i-arrow"></use></svg></button></div></article>
+<article class="vacancy-card reveal"><div class="vacancy-cover vacancy-cover--team"><svg><use href="#i-users"></use></svg><span class="cover-label">ПОДРАЗДЕЛЕНИЯ</span></div><div class="vacancy-body"><span class="vacancy-label">НАПРАВЛЕНИЕ 06</span><h3><a aria-label="Подробнее о вакансии: Подразделения МОГ" data-job="mog" href="#job-modal">Подразделения<br/>МОГ</a></h3><p class="vacancy-summary">Направление подразделений МОГ. Состав задач и требования необходимо уточнить по вакансии.</p><button class="vacancy-link" aria-label="Оставить заявку: Подразделения МОГ" data-apply-job="mog" type="button">Оставить заявку <svg><use href="#i-arrow"></use></svg></button></div></article>
+</div>
+<p class="section-note reveal">Перечень направлений приведён для ознакомления. Наличие вакансий, требования и условия необходимо подтвердить перед публикацией и при обращении.</p>
+</div>
+</section>
+<section aria-labelledby="payments-title" class="section payments-section" id="payments">
+<div class="container payments-layout">
+<div class="reveal"><span class="section-kicker section-kicker--light">СВЕДЕНИЯ ОБ УСЛОВИЯХ</span><h2 id="payments-title">Из чего складывается расчёт</h2><p>Размер единовременной выплаты зависит от региона и действующих программ. Ежемесячное содержание зависит от должности и других применимых условий.</p><button class="button button--outline" data-open-contact="" type="button">Оставить заявку <svg><use href="#i-arrow"></use></svg></button></div>
+<div class="payment-facts reveal">
+<div><span class="fact-number">01</span><div><h3>Единовременная выплата</h3><p>Перед публикацией необходимо проверить федеральную и региональную составляющие, основания и порядок получения.</p></div></div>
+<div><span class="fact-number">02</span><div><h3>Ежемесячное содержание</h3><p>Итог зависит от конкретной должности и условий. Указанное значение используется в примере расчёта.</p></div></div>
+<div><span class="fact-number">03</span><div><h3>Сумма за первый год</h3><p>Арифметический пример не является гарантией выплат каждому заявителю.</p></div></div>
+</div>
+</div>
+</section>
+<section aria-labelledby="steps-title" class="section steps-section" id="steps">
+<div class="container"><div class="section-heading reveal"><div><span class="section-kicker">ПОРЯДОК ОБРАЩЕНИЯ</span><h2 id="steps-title">Как получить информацию</h2><p>Три понятных шага — без лишних действий.</p></div></div>
+<div class="steps-grid">
+<article class="step-card reveal"><span class="step-num">01</span><span class="step-icon"><svg><use href="#i-file"></use></svg></span><h3>Оставьте обращение</h3><p>Заполните форму и укажите интересующее направление.</p></article>
+<article class="step-card reveal"><span class="step-num">02</span><span class="step-icon"><svg><use href="#i-phone"></use></svg></span><h3>Получите консультацию</h3><p>Уточните актуальные вакансии, требования и условия.</p></article>
+<article class="step-card reveal"><span class="step-num">03</span><span class="step-icon"><svg><use href="#i-check"></use></svg></span><h3>Уточните детали</h3><p>Получите сведения о дальнейших действиях по выбранной вакансии.</p></article>
+</div>
+</div>
+</section>
+<section aria-labelledby="faq-title" class="section section--light faq-section" id="faq">
+<div class="container"><div class="section-heading reveal"><div><span class="section-kicker">ВОПРОСЫ И ОТВЕТЫ</span><h2 id="faq-title">Частые вопросы</h2><p>Основная информация перед обращением.</p></div></div>
+<div class="faq-grid reveal">
+<details class="faq-item"><summary>От чего зависит единовременная выплата? <svg><use href="#i-plus"></use></svg></summary><p>От региона, действующей программы и соблюдения условий её предоставления. Конкретный состав выплаты необходимо проверить по официальным источникам.</p></details>
+<details class="faq-item"><summary>Какие документы могут потребоваться? <svg><use href="#i-plus"></use></svg></summary><p>Точный перечень зависит от вакансии и порядка оформления. Его следует запросить у уполномоченного представителя.</p></details>
+<details class="faq-item"><summary>От чего зависит ежемесячное содержание? <svg><use href="#i-plus"></use></svg></summary><p>От должности и применимых условий. Сумма на первом экране — исходное значение для показанного расчёта.</p></details>
+<details class="faq-item"><summary>Можно узнать требования по конкретной специальности? <svg><use href="#i-plus"></use></svg></summary><p>Да. Выберите интересующее направление в форме и попросите предоставить актуальные требования и условия.</p></details>
+<details class="faq-item"><summary>Указанная годовая сумма гарантирована? <svg><use href="#i-plus"></use></svg></summary><p>Нет. Значение «до 6 000 000 ₽ в год» — заявленный расчётный ориентир. Фактические выплаты и условия зависят от региона, должности и применимых правил.</p></details>
+<details class="faq-item"><summary>Можно ли выбрать направление? <svg><use href="#i-plus"></use></svg></summary><p>В обращении можно указать интересующую специальность. Наличие мест и возможность оформления уточняются индивидуально.</p></details>
+</div>
+</div>
+</section>
+<section aria-labelledby="contacts-title" class="section contact-section" id="contacts">
+<div class="container contact-layout reveal">
+<div class="contact-promo"><span class="section-kicker section-kicker--light">КОНТАКТЫ</span><h2>Есть вопросы?<br/>Оставьте обращение</h2><p>Укажите ФИО, телефон и возраст, чтобы получить актуальные сведения об интересующей вакансии.</p><div class="contact-promo-icon"><svg><use href="#i-message"></use></svg></div></div>
+<div class="contact-panel"><span class="section-kicker">ФОРМА ОБРАЩЕНИЯ</span><h2 id="contacts-title">Оставить заявку</h2><p class="contact-subhead">Поля, отмеченные звёздочкой, обязательны.</p>
+<form class="contact-form" id="main-form" novalidate=""><div class="form-grid">
+<label>ФИО *<input autocomplete="name" maxlength="140" minlength="5" name="full_name" placeholder="Иванов Иван Иванович" required="" type="text"/></label>
+<label>Номер телефона *<input autocomplete="tel" inputmode="tel" name="phone" placeholder="+7 (999) 999-99-99" required="" type="tel"/></label>
+<label class="age-field">Возраст *<input aria-describedby="age-note-main-form" inputmode="numeric" max="64" min="18" name="age" placeholder="Полных лет" required="" step="1" type="number"/><small class="field-note" id="age-note-main-form">Возраст до 64 лет включительно. Условия уточняются по конкретной вакансии.</small></label>
+</div>
+<input name="vacancy" type="hidden" value=""/><label class="hp-field" aria-hidden="true" tabindex="-1">Ваш сайт<input autocomplete="off" name="website" tabindex="-1" type="text"/></label>
+<label class="consent"><input name="consent" required="" type="checkbox"/><span>Согласен(на) на обработку персональных данных согласно <a href="privacy.html" rel="noopener" target="_blank">политике конфиденциальности</a> *</span></label>
+<button class="button button--green submit-button" type="submit">Оставить заявку <svg><use href="#i-arrow"></use></svg></button>
+<p aria-live="polite" class="form-status" role="status"></p></form>
+<p class="form-caption">Заявка отправляется через защищённое соединение. Перед публичным запуском необходимо заполнить политику конфиденциальности.</p>
+</div>
+</div>
+</section>
+</main>
+<footer class="site-footer"><div class="container footer-inner"><a class="brand brand--footer" href="#top"><span class="brand-name">КОНТРАКТ<span class="brand-dot">.</span></span><span class="brand-caption">ИНФОРМАЦИЯ О ВАКАНСИЯХ</span></a><p>Информационный макет. Сведения об организации, контакты и актуальные условия добавляются перед публикацией.</p><a href="privacy.html">Политика конфиденциальности</a><a aria-label="Вернуться наверх" class="back-to-top" href="#top">↑</a></div></footer>
+<dialog aria-labelledby="modal-title" class="modal" id="contact-modal"><div class="modal-head"><div><span class="section-kicker">ОБРАТНАЯ СВЯЗЬ</span><h2 id="modal-title">Оставить заявку</h2></div><button aria-label="Закрыть" class="modal-close" type="button">×</button></div><p class="modal-lead">Укажите ФИО, телефон и возраст. Менеджер сможет уточнить условия интересующей вакансии.</p><p class="selected-vacancy" id="selected-vacancy" hidden>Выбрана вакансия: <strong id="selected-vacancy-name"></strong></p><form class="contact-form" id="modal-form" novalidate=""><div class="form-grid">
+<label>ФИО *<input autocomplete="name" maxlength="140" minlength="5" name="full_name" placeholder="Иванов Иван Иванович" required="" type="text"/></label>
+<label>Номер телефона *<input autocomplete="tel" inputmode="tel" name="phone" placeholder="+7 (999) 999-99-99" required="" type="tel"/></label>
+<label class="age-field">Возраст *<input aria-describedby="age-note-modal-form" inputmode="numeric" max="64" min="18" name="age" placeholder="Полных лет" required="" step="1" type="number"/><small class="field-note" id="age-note-modal-form">Возраст до 64 лет включительно. Условия уточняются по конкретной вакансии.</small></label>
+</div>
+<input name="vacancy" type="hidden" value=""/><label class="hp-field" aria-hidden="true" tabindex="-1">Ваш сайт<input autocomplete="off" name="website" tabindex="-1" type="text"/></label>
+<label class="consent"><input name="consent" required="" type="checkbox"/><span>Согласен(на) на обработку персональных данных согласно <a href="privacy.html" rel="noopener" target="_blank">политике конфиденциальности</a> *</span></label>
+<button class="button button--green submit-button" type="submit">Оставить заявку <svg><use href="#i-arrow"></use></svg></button>
+<p aria-live="polite" class="form-status" role="status"></p></form><p class="form-caption">Заявка отправляется через Yandex Cloud в Telegram-группу менеджеров.</p></dialog>
+<dialog aria-labelledby="job-title" class="modal modal--job" id="job-modal"><div class="modal-head"><div><span class="section-kicker">НАПРАВЛЕНИЕ ВАКАНСИИ</span><h2 id="job-title"></h2></div><button aria-label="Закрыть" class="modal-close" type="button">×</button></div><p class="modal-lead" id="job-description"></p><div class="job-meta"><svg><use href="#i-file"></use></svg><p>Требования, доступность вакансии и актуальные условия уточняются перед оформлением обращения.</p></div><button class="button button--green" id="job-contact" type="button">Оставить заявку <svg><use href="#i-arrow"></use></svg></button></dialog>
+</body>
+</html>
