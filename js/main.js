@@ -353,7 +353,7 @@ for (const form of document.querySelectorAll('.contact-form')) {
 
       if (!result.ok || payload?.ok !== true) {
         throw new Error(
-          `HTTP ${result.status}: ${payload?.error || 'send_failed'}`
+          `HTTP ${result.status}: ${payload?.message || payload?.error || 'send_failed'}`
         );
       }
 
