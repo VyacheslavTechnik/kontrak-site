@@ -6,7 +6,7 @@
  * No Telegram bot token or other private secrets belong in frontend code.
  */
 const SITE_CONFIG = Object.freeze({
-  webhookUrl: 'https://kontrakt-telegram.vkotov1830.workers.dev/',
+  webhookUrl: 'https://n8n.vahta-podbor.ru/webhook/leads',
   yandexMetricaId: null,
 });
 
