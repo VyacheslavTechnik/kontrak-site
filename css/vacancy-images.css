@@ -1,0 +1,139 @@
+/* Compact vertical vacancy cards */
+.vacancies-section .vacancy-grid{
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:18px;
+}
+
+.vacancies-section .vacancy-card{
+  min-height:0;
+  height:100%;
+  display:flex;
+  flex-direction:column;
+  overflow:hidden;
+  border-radius:14px;
+  background:#fff;
+}
+
+.vacancies-section .vacancy-cover{
+  width:100%;
+  flex:none;
+  aspect-ratio:16/9;
+  min-height:0;
+  position:relative;
+  overflow:hidden;
+  background:#dbe3ea;
+}
+
+.vacancies-section .vacancy-cover--photo img{
+  width:100%;
+  height:100%;
+  min-width:100%;
+  min-height:100%;
+  max-width:none;
+  object-fit:cover;
+  display:block;
+  transition:transform .35s ease;
+}
+
+.vacancies-section .vacancy-card:hover .vacancy-cover--photo img{
+  transform:scale(1.035);
+}
+
+.vacancies-section .vacancy-body{
+  flex:1;
+  display:flex;
+  flex-direction:column;
+  justify-content:flex-start;
+  padding:16px 17px 16px;
+}
+
+.vacancies-section .vacancy-body h3{
+  margin:0 0 7px;
+  font-size:20px;
+  line-height:1.16;
+  min-height:46px;
+}
+
+.vacancies-section .vacancy-body h3 a{
+  display:-webkit-box;
+  -webkit-box-orient:vertical;
+  -webkit-line-clamp:2;
+  overflow:hidden;
+}
+
+.vacancies-section .vacancy-salary{
+  margin:0 0 10px;
+  color:#274b70;
+  font-size:13px;
+  line-height:1.35;
+  font-weight:800;
+}
+
+.vacancies-section .vacancy-summary{
+  margin:0 0 14px;
+  color:#607087;
+  font-size:12px;
+  line-height:1.48;
+  display:-webkit-box;
+  -webkit-box-orient:vertical;
+  -webkit-line-clamp:3;
+  overflow:hidden;
+  min-height:53px;
+}
+
+.vacancies-section .vacancy-link{
+  margin-top:auto;
+  width:100%;
+  min-height:40px;
+  padding:9px 12px;
+  border-radius:8px;
+}
+
+/* Focal points after 16:9 crop */
+.vacancy-cover--driver img{object-position:50% 55%}
+.vacancy-cover--security img{object-position:52% 42%}
+.vacancy-cover--laborer img{object-position:50% 38%}
+.vacancy-cover--rembat img{object-position:48% 50%}
+.vacancy-cover--welder img{object-position:50% 48%}
+.vacancy-cover--tanker img{object-position:50% 52%}
+.vacancy-cover--vohr img{object-position:50% 48%}
+.vacancy-cover--uav img{object-position:50% 38%}
+.vacancy-cover--reb img{object-position:52% 50%}
+.vacancy-cover--electrician img{object-position:55% 50%}
+
+@media(max-width:900px){
+  .vacancies-section .vacancy-grid{
+    grid-template-columns:repeat(2,minmax(0,1fr));
+  }
+}
+
+@media(max-width:620px){
+  .vacancies-section .vacancy-grid{
+    grid-template-columns:1fr;
+    gap:12px;
+  }
+
+  .vacancies-section .vacancy-card{
+    max-width:520px;
+    width:100%;
+    margin-inline:auto;
+  }
+
+  .vacancies-section .vacancy-cover{
+    aspect-ratio:16/9;
+  }
+
+  .vacancies-section .vacancy-body{
+    padding:14px 15px 15px;
+  }
+
+  .vacancies-section .vacancy-body h3{
+    min-height:0;
+    font-size:19px;
+  }
+
+  .vacancies-section .vacancy-summary{
+    min-height:0;
+  }
+}
