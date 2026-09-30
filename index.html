@@ -298,16 +298,25 @@
 <label class="age-field">Возраст *<input aria-describedby="age-note-main-form" inputmode="numeric" max="64" min="18" name="age" placeholder="Полных лет" required="" step="1" type="number"/><small class="field-note" id="age-note-main-form">Возраст до 64 лет включительно. Условия уточняются по конкретной вакансии.</small></label>
 </div>
 <input name="vacancy" type="hidden" value=""/><label class="hp-field" aria-hidden="true" tabindex="-1">Ваш сайт<input autocomplete="off" name="website" tabindex="-1" type="text"/></label>
-<label class="consent"><input name="consent" required="" type="checkbox"/><span>Согласен(на) на обработку персональных данных согласно <a href="privacy.html" rel="noopener" target="_blank">политике конфиденциальности</a> *</span></label>
+<label class="consent">
+  <input name="consent" required="" type="checkbox"/>
+  <span>
+    Я даю согласие на обработку персональных данных в соответствии с
+    <a href="consent.html" rel="noopener" target="_blank">Согласием на обработку персональных данных</a> *
+  </span>
+</label>
 <button class="button button--green submit-button" type="submit">Оставить заявку <svg><use href="#i-arrow"></use></svg></button>
 <p aria-live="polite" class="form-status" role="status"></p></form>
-<p class="form-caption">Заявка отправляется через защищённое соединение. Перед публичным запуском необходимо заполнить политику конфиденциальности.</p>
+<p class="form-caption">
+  До отправки заявки ознакомьтесь с
+  <a href="privacy.html" rel="noopener" target="_blank">Политикой в отношении обработки персональных данных</a>.
+</p>
 </div>
 </div>
 </section>
 </main>
 
-<footer class="site-footer"><div class="container footer-inner"><a class="brand brand--footer" href="#top"><span class="brand-name">КОНТРАКТ<span class="brand-dot">.</span></span><span class="brand-caption">ИНФОРМАЦИЯ О ВАКАНСИЯХ</span></a><p>Информационный макет. Сведения об организации, контакты и актуальные условия добавляются перед публикацией.</p><a href="privacy.html">Политика конфиденциальности</a><a aria-label="Вернуться наверх" class="back-to-top" href="#top">↑</a></div></footer>
+<footer class="site-footer"><div class="container footer-inner"><a class="brand brand--footer" href="#top"><span class="brand-name">КОНТРАКТ<span class="brand-dot">.</span></span><span class="brand-caption">ИНФОРМАЦИЯ О ВАКАНСИЯХ</span></a><p>Информация о вакансиях и условиях. Актуальные сведения уточняются при обращении.</p><a href="privacy.html">Политика обработки персональных данных</a><a href="consent.html">Согласие на обработку персональных данных</a><a aria-label="Вернуться наверх" class="back-to-top" href="#top">↑</a></div></footer>
 
 <dialog aria-labelledby="modal-title" class="modal" id="contact-modal">
 <div class="modal-head"><div><span class="section-kicker">ОБРАТНАЯ СВЯЗЬ</span><h2 id="modal-title">Оставить заявку</h2></div><button aria-label="Закрыть" class="modal-close" type="button">×</button></div>
