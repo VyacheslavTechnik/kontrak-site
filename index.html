@@ -9,358 +9,2291 @@
 <meta content="Контракт — информация о вакансиях" property="og:title"/>
 <meta content="Направления вакансий, расчётный ориентир суммы за первый год и форма заявки." property="og:description"/>
 <meta content="assets/images/hero.webp" property="og:image"/>
+
 <title>Контракт — информация о вакансиях и условиях</title>
+
 <link as="image" fetchpriority="high" href="assets/images/hero.webp" rel="preload"/>
 <link href="css/style.css" rel="stylesheet"/>
 <link href="css/animations.css" rel="stylesheet"/>
 <link href="css/responsive.css" rel="stylesheet"/>
 <link href="css/vacancy-images.css" rel="stylesheet"/>
-<!-- Yandex.Metrika counter -->
-<script type="text/javascript">
-(function(m,e,t,r,i,k,a){
-m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
-m[i].l=1*new Date();
-for (var j=0;j<document.scripts.length;j++){if(document.scripts[j].src===r){return;}}
-k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)
-})(window,document,'script','https://mc.yandex.ru/metrika/tag.js?id=113226768','ym');
-ym(113226768,'init',{ssr:true,clickmap:true,ecommerce:"dataLayer",referrer:document.referrer,url:location.href,accurateTrackBounce:true,trackLinks:true});
+
+<!--
+  Яндекс Метрика НЕ загружается автоматически.
+  Она будет запущена только после согласия пользователя.
+-->
+<script>
+(function () {
+  'use strict';
+
+  const METRIKA_ID = 113226768;
+  const CONSENT_KEY = 'analytics_consent';
+
+  window.startYandexMetrika = function () {
+    if (window.__yandexMetrikaStarted) {
+      return;
+    }
+
+    window.__yandexMetrikaStarted = true;
+
+    window.ym = window.ym || function () {
+      (window.ym.a = window.ym.a || []).push(arguments);
+    };
+
+    window.ym.l = 1 * new Date();
+
+    const script = document.createElement('script');
+
+    script.async = true;
+    script.src =
+      'https://mc.yandex.ru/metrika/tag.js?id=' + METRIKA_ID;
+
+    document.head.appendChild(script);
+
+    window.ym(METRIKA_ID, 'init', {
+      ssr: true,
+      clickmap: true,
+      ecommerce: 'dataLayer',
+      referrer: document.referrer,
+      url: location.href,
+      accurateTrackBounce: true,
+      trackLinks: true
+    });
+  };
+
+  try {
+    if (localStorage.getItem(CONSENT_KEY) === 'accepted') {
+      window.startYandexMetrika();
+    }
+  } catch (error) {
+    console.warn(
+      'Не удалось прочитать настройки аналитики:',
+      error
+    );
+  }
+})();
 </script>
-<!-- /Yandex.Metrika counter -->
-<script defer="" src="js/main.js"></script>
+
+<script defer src="js/main.js"></script>
+
+<style>
+.cookie-banner {
+  position: fixed;
+  left: 20px;
+  right: 20px;
+  bottom: 20px;
+  z-index: 99999;
+}
+
+.cookie-banner[hidden] {
+  display: none !important;
+}
+
+.cookie-banner__content {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 20px 22px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+
+  background: #101b2d;
+  color: #ffffff;
+
+  border: 1px solid rgba(255, 255, 255, 0.10);
+  border-radius: 16px;
+
+  box-shadow:
+    0 15px 45px rgba(0, 0, 0, 0.25);
+}
+
+.cookie-banner__text {
+  max-width: 720px;
+}
+
+.cookie-banner__text strong {
+  display: block;
+  margin-bottom: 6px;
+
+  color: #ffffff;
+
+  font-size: 17px;
+  line-height: 1.3;
+}
+
+.cookie-banner__text p {
+  margin: 0;
+
+  color: rgba(255, 255, 255, 0.78);
+
+  font-size: 14px;
+  line-height: 1.55;
+}
+
+.cookie-banner__text a {
+  color: #ffffff;
+
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.cookie-banner__actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  flex-shrink: 0;
+}
+
+.cookie-button {
+  min-height: 46px;
+  padding: 0 18px;
+
+  border-radius: 10px;
+  border: 0;
+
+  font: inherit;
+  font-size: 14px;
+  font-weight: 700;
+
+  cursor: pointer;
+
+  transition:
+    transform 0.15s ease,
+    opacity 0.15s ease,
+    background 0.15s ease;
+}
+
+.cookie-button:hover {
+  transform: translateY(-1px);
+}
+
+.cookie-button:focus-visible {
+  outline: 3px solid rgba(255, 255, 255, 0.65);
+  outline-offset: 3px;
+}
+
+.cookie-button--accept {
+  background: #2eaa63;
+  color: #ffffff;
+}
+
+.cookie-button--accept:hover {
+  background: #279657;
+}
+
+.cookie-button--secondary {
+  background: rgba(255, 255, 255, 0.10);
+  color: #ffffff;
+
+  border: 1px solid rgba(255, 255, 255, 0.18);
+}
+
+.cookie-button--secondary:hover {
+  background: rgba(255, 255, 255, 0.16);
+}
+
+.cookie-settings-link {
+  padding: 0;
+
+  border: 0;
+
+  background: transparent;
+
+  color: inherit;
+
+  font: inherit;
+
+  cursor: pointer;
+
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.cookie-settings-link:hover {
+  opacity: 0.8;
+}
+
+@media (max-width: 700px) {
+  .cookie-banner {
+    left: 12px;
+    right: 12px;
+    bottom: 12px;
+  }
+
+  .cookie-banner__content {
+    padding: 18px;
+
+    flex-direction: column;
+    align-items: stretch;
+
+    gap: 16px;
+
+    border-radius: 14px;
+  }
+
+  .cookie-banner__actions {
+    width: 100%;
+
+    flex-direction: column-reverse;
+  }
+
+  .cookie-button {
+    width: 100%;
+    min-height: 48px;
+  }
+}
+</style>
+
 </head>
+
 <body>
-<noscript><div><img src="https://mc.yandex.ru/watch/113226768" style="position:absolute; left:-9999px;" alt=""/></div></noscript>
+
 <a class="skip-link" href="#main">Перейти к содержимому</a>
 
 <svg aria-hidden="true" class="svg-defs" xmlns="http://www.w3.org/2000/svg">
-<symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14m-7-7 7 7-7 7"></path></symbol>
-<symbol id="i-message" viewBox="0 0 24 24"><path d="M20 11.5a7.5 7.5 0 0 1-7.5 7.5 8 8 0 0 1-3-.58L4 20l1.64-4.58A7.5 7.5 0 1 1 20 11.5Z"></path><path d="M9 11.5h.01m3 0h.01m3 0h.01" stroke-linecap="round" stroke-width="2.7"></path></symbol>
-<symbol id="i-cash" viewBox="0 0 24 24"><rect height="14" rx="3" width="18" x="3" y="5"></rect><path d="M3 9h18m-9 3v5m-2.5-4.5c0-1 1-1.5 2.5-1.5s2.5.5 2.5 1.5c0 2-5 1-5 3 0 1 1 1.5 2.5 1.5s2.5-.5 2.5-1.5"></path></symbol>
-<symbol id="i-calendar" viewBox="0 0 24 24"><rect height="16" rx="2" width="18" x="3" y="5"></rect><path d="M7 3v4m10-4v4M3 10h18M7 14h3m4 0h3m-10 4h3"></path></symbol>
-<symbol id="i-chart" viewBox="0 0 24 24"><path d="M4 20V12m6 8V8m6 12V4m4 16H2"></path></symbol>
-<symbol id="i-truck" viewBox="0 0 24 24"><path d="M3 6h11v12H3zM14 10h4l3 4v4h-7z"></path><circle cx="7" cy="18" r="2"></circle><circle cx="18" cy="18" r="2"></circle></symbol>
-<symbol id="i-tool" viewBox="0 0 24 24"><path d="M14 6a6 6 0 0 0-7 7L3 17l4 4 4-4a6 6 0 0 0 7-7l-4 4-4-4z"></path></symbol>
-<symbol id="i-target" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"></circle><circle cx="12" cy="12" r="5"></circle><circle cx="12" cy="12" r="1"></circle></symbol>
-<symbol id="i-radio" viewBox="0 0 24 24"><rect height="18" rx="2" width="10" x="7" y="3"></rect><path d="M10 17h4M12 7v3m-3.5 1.5a5 5 0 0 0 0 4m7-4a5 5 0 0 1 0 4"></path></symbol>
-<symbol id="i-shield" viewBox="0 0 24 24"><path d="M12 2 20 5v6c0 5-3.2 8.6-8 11-4.8-2.4-8-6-8-11V5z"></path><path d="m8.5 12 2.5 2.5 4.5-5"></path></symbol>
-<symbol id="i-users" viewBox="0 0 24 24"><circle cx="9" cy="8" r="3"></circle><path d="M3 20v-2a6 6 0 0 1 12 0v2zm13-14a3 3 0 0 1 0 6m2 3a5 5 0 0 1 3 5"></path></symbol>
-<symbol id="i-file" viewBox="0 0 24 24"><path d="M6 2h8l5 5v15H6zM14 2v5h5M9 12h7m-7 4h7"></path></symbol>
-<symbol id="i-phone" viewBox="0 0 24 24"><path d="M6 3h4l2 5-2.5 2a15 15 0 0 0 4.5 4.5l2-2.5 5 2v4a3 3 0 0 1-3.3 3C9.6 20.2 3.8 14.4 3 6.3A3 3 0 0 1 6 3Z"></path></symbol>
-<symbol id="i-pin" viewBox="0 0 24 24"><path d="M20 10c0 5-8 12-8 12S4 15 4 10a8 8 0 1 1 16 0Z"></path><circle cx="12" cy="10" r="2"></circle></symbol>
-<symbol id="i-plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"></path></symbol>
-<symbol id="i-check" viewBox="0 0 24 24"><path d="m4 12 5 5L20 6"></path></symbol>
+  <symbol id="i-arrow" viewBox="0 0 24 24">
+    <path d="M5 12h14m-7-7 7 7-7 7"></path>
+  </symbol>
+
+  <symbol id="i-message" viewBox="0 0 24 24">
+    <path d="M20 11.5a7.5 7.5 0 0 1-7.5 7.5 8 8 0 0 1-3-.58L4 20l1.64-4.58A7.5 7.5 0 1 1 20 11.5Z"></path>
+    <path d="M9 11.5h.01m3 0h.01m3 0h.01" stroke-linecap="round" stroke-width="2.7"></path>
+  </symbol>
+
+  <symbol id="i-cash" viewBox="0 0 24 24">
+    <rect height="14" rx="3" width="18" x="3" y="5"></rect>
+    <path d="M3 9h18m-9 3v5m-2.5-4.5c0-1 1-1.5 2.5-1.5s2.5.5 2.5 1.5c0 2-5 1-5 3 0 1 1 1.5 2.5 1.5s2.5-.5 2.5-1.5"></path>
+  </symbol>
+
+  <symbol id="i-calendar" viewBox="0 0 24 24">
+    <rect height="16" rx="2" width="18" x="3" y="5"></rect>
+    <path d="M7 3v4m10-4v4M3 10h18M7 14h3m4 0h3m-10 4h3"></path>
+  </symbol>
+
+  <symbol id="i-chart" viewBox="0 0 24 24">
+    <path d="M4 20V12m6 8V8m6 12V4m4 16H2"></path>
+  </symbol>
+
+  <symbol id="i-truck" viewBox="0 0 24 24">
+    <path d="M3 6h11v12H3zM14 10h4l3 4v4h-7z"></path>
+    <circle cx="7" cy="18" r="2"></circle>
+    <circle cx="18" cy="18" r="2"></circle>
+  </symbol>
+
+  <symbol id="i-tool" viewBox="0 0 24 24">
+    <path d="M14 6a6 6 0 0 0-7 7L3 17l4 4 4-4a6 6 0 0 0 7-7l-4 4-4-4z"></path>
+  </symbol>
+
+  <symbol id="i-target" viewBox="0 0 24 24">
+    <circle cx="12" cy="12" r="9"></circle>
+    <circle cx="12" cy="12" r="5"></circle>
+    <circle cx="12" cy="12" r="1"></circle>
+  </symbol>
+
+  <symbol id="i-radio" viewBox="0 0 24 24">
+    <rect height="18" rx="2" width="10" x="7" y="3"></rect>
+    <path d="M10 17h4M12 7v3m-3.5 1.5a5 5 0 0 0 0 4m7-4a5 5 0 0 1 0 4"></path>
+  </symbol>
+
+  <symbol id="i-shield" viewBox="0 0 24 24">
+    <path d="M12 2 20 5v6c0 5-3.2 8.6-8 11-4.8-2.4-8-6-8-11V5z"></path>
+    <path d="m8.5 12 2.5 2.5 4.5-5"></path>
+  </symbol>
+
+  <symbol id="i-users" viewBox="0 0 24 24">
+    <circle cx="9" cy="8" r="3"></circle>
+    <path d="M3 20v-2a6 6 0 0 1 12 0v2zm13-14a3 3 0 0 1 0 6m2 3a5 5 0 0 1 3 5"></path>
+  </symbol>
+
+  <symbol id="i-file" viewBox="0 0 24 24">
+    <path d="M6 2h8l5 5v15H6zM14 2v5h5M9 12h7m-7 4h7"></path>
+  </symbol>
+
+  <symbol id="i-phone" viewBox="0 0 24 24">
+    <path d="M6 3h4l2 5-2.5 2a15 15 0 0 0 4.5 4.5l2-2.5 5 2v4a3 3 0 0 1-3.3 3C9.6 20.2 3.8 14.4 3 6.3A3 3 0 0 1 6 3Z"></path>
+  </symbol>
+
+  <symbol id="i-pin" viewBox="0 0 24 24">
+    <path d="M20 10c0 5-8 12-8 12S4 15 4 10a8 8 0 1 1 16 0Z"></path>
+    <circle cx="12" cy="10" r="2"></circle>
+  </symbol>
+
+  <symbol id="i-plus" viewBox="0 0 24 24">
+    <path d="M12 5v14M5 12h14"></path>
+  </symbol>
+
+  <symbol id="i-check" viewBox="0 0 24 24">
+    <path d="m4 12 5 5L20 6"></path>
+  </symbol>
 </svg>
 
+
 <header class="site-header" id="top">
-<div class="container header-inner">
-<a aria-label="Контракт — на главную" class="brand" href="#top">
-<span class="brand-name">КОНТРАКТ<span class="brand-dot">.</span></span>
-<span class="brand-caption">ИНФОРМАЦИЯ О ВАКАНСИЯХ</span>
-</a>
-<nav aria-label="Основная навигация" class="desktop-nav">
-<a href="#vacancies">Вакансии</a><a href="#payments">Выплаты</a><a href="#steps">Как обратиться</a><a href="#faq">Вопросы</a><a href="#contacts">Контакты</a>
-</nav>
-<button class="button button--green header-cta" data-open-contact="" type="button">Оставить заявку <svg><use href="#i-arrow"></use></svg></button>
-<button aria-controls="mobile-nav" aria-expanded="false" aria-label="Открыть меню" class="menu-toggle" type="button"><span></span><span></span><span></span></button>
-</div>
-<nav aria-label="Мобильная навигация" class="mobile-nav" hidden="" id="mobile-nav">
-<a href="#vacancies">Вакансии</a><a href="#payments">Выплаты</a><a href="#steps">Как обратиться</a><a href="#faq">Вопросы</a><a href="#contacts">Контакты</a>
-<button class="button button--green" data-open-contact="" type="button">Оставить заявку</button>
-</nav>
+
+  <div class="container header-inner">
+
+    <a aria-label="Контракт — на главную" class="brand" href="#top">
+
+      <span class="brand-name">
+        КОНТРАКТ<span class="brand-dot">.</span>
+      </span>
+
+      <span class="brand-caption">
+        ИНФОРМАЦИЯ О ВАКАНСИЯХ
+      </span>
+
+    </a>
+
+    <nav aria-label="Основная навигация" class="desktop-nav">
+      <a href="#vacancies">Вакансии</a>
+      <a href="#payments">Выплаты</a>
+      <a href="#steps">Как обратиться</a>
+      <a href="#faq">Вопросы</a>
+      <a href="#contacts">Контакты</a>
+    </nav>
+
+    <button
+      class="button button--green header-cta"
+      data-open-contact=""
+      type="button"
+    >
+      Оставить заявку
+      <svg><use href="#i-arrow"></use></svg>
+    </button>
+
+    <button
+      aria-controls="mobile-nav"
+      aria-expanded="false"
+      aria-label="Открыть меню"
+      class="menu-toggle"
+      type="button"
+    >
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+  </div>
+
+  <nav
+    aria-label="Мобильная навигация"
+    class="mobile-nav"
+    hidden=""
+    id="mobile-nav"
+  >
+    <a href="#vacancies">Вакансии</a>
+    <a href="#payments">Выплаты</a>
+    <a href="#steps">Как обратиться</a>
+    <a href="#faq">Вопросы</a>
+    <a href="#contacts">Контакты</a>
+
+    <button
+      class="button button--green"
+      data-open-contact=""
+      type="button"
+    >
+      Оставить заявку
+    </button>
+  </nav>
+
 </header>
 
+
 <main id="main">
+
 <section aria-labelledby="hero-title" class="hero">
-<div aria-label="Иллюстрация: человек в военной экипировке на фоне светлого природного пейзажа" class="hero-picture" role="img"></div>
-<div class="container hero-content">
-<span class="eyebrow hero-enter" style="--enter-delay:0ms"><span class="eyebrow-line"></span> СПЕЦИАЛЬНОСТИ · УСЛОВИЯ · ИНФОРМАЦИЯ</span>
-<h1 class="hero-enter" id="hero-title" style="--enter-delay:70ms">Вакансии<br/>по контракту</h1>
-<p class="hero-lead hero-enter" style="--enter-delay:140ms">Информация о специальностях и условиях</p>
-<div aria-label="Расчётный ориентир суммы за первый год" class="annual-amount hero-enter" style="--enter-delay:210ms">
-<span class="annual-amount__label">Расчётная сумма за первый год</span>
-<strong>до 6 000 000 ₽ <span>в год</span></strong>
-<span class="annual-amount__detail">Сумма зависит от региона, должности и действующих условий</span>
-</div>
-<div class="hero-bottom hero-enter" style="--enter-delay:420ms">
-<button class="button button--green button--hero" data-open-contact="" type="button"><svg><use href="#i-message"></use></svg><span>Оставить заявку</span><svg class="button-arrow"><use href="#i-arrow"></use></svg></button>
-<p>Сумма приведена как ориентир по исходным данным проекта, не гарантирована и требует проверки по конкретной вакансии и региону.</p>
-</div>
-</div>
-</section>
 
-<section aria-labelledby="vacancies-title" class="section section--light vacancies-section" id="vacancies">
-  <div class="container">
-    <div class="section-heading reveal">
-      <div>
-        <span class="section-kicker">НАПРАВЛЕНИЯ</span>
-        <h2 id="vacancies-title">Выберите специальность</h2>
-        <p>Ознакомьтесь с доступными направлениями и оставьте заявку на интересующую вакансию.</p>
-      </div>
-    </div>
+  <div
+    aria-label="Иллюстрация: человек в военной экипировке на фоне светлого природного пейзажа"
+    class="hero-picture"
+    role="img"
+  ></div>
 
-    <div class="vacancy-grid">
+  <div class="container hero-content">
 
-      <article class="vacancy-card reveal">
-        <div class="vacancy-cover vacancy-cover--photo vacancy-cover--driver"><img alt="Военные грузовые автомобили" decoding="async" loading="lazy" src="assets/images/vacancy-driver.webp"/></div>
-        <div class="vacancy-body">
-<h3><a aria-label="Подробнее о вакансии: Водители B, C, D, E" data-job="driver" href="#job-modal">Водители<br/>B, C, D, E</a></h3>
-          <p class="vacancy-salary">от 300 000 ₽ в месяц</p><p class="vacancy-summary">Работа на служебном транспорте: УАЗ Патриот, УРАЛ, КАМАЗ. Перевозки и сопровождение грузов. Нужны права выбранной категории.</p>
-          <button class="vacancy-link" aria-label="Оставить заявку: Водители B, C, D, E" data-apply-job="driver" type="button">Оставить заявку <svg><use href="#i-arrow"></use></svg></button>
-        </div>
-      </article>
+    <span
+      class="eyebrow hero-enter"
+      style="--enter-delay:0ms"
+    >
+      <span class="eyebrow-line"></span>
+      СПЕЦИАЛЬНОСТИ · УСЛОВИЯ · ИНФОРМАЦИЯ
+    </span>
 
-      <article class="vacancy-card reveal">
-        <div class="vacancy-cover vacancy-cover--photo vacancy-cover--security"><img alt="Охрана объекта инфраструктуры" decoding="async" loading="lazy" src="assets/images/vacancy-security.webp"/></div>
-        <div class="vacancy-body">
-<h3><a aria-label="Подробнее о вакансии: Охрана объектов инфраструктуры" data-job="security" href="#job-modal">Охрана объектов<br/>инфраструктуры</a></h3>
-          <p class="vacancy-salary">от 280 000 ₽ в месяц</p><p class="vacancy-summary">Охрана инфраструктурных и гражданских объектов в тылу. Сопровождение грузов. Можно без опыта.</p>
-          <button class="vacancy-link" aria-label="Оставить заявку: Охрана объектов инфраструктуры" data-apply-job="security" type="button">Оставить заявку <svg><use href="#i-arrow"></use></svg></button>
-        </div>
-      </article>
+    <h1
+      class="hero-enter"
+      id="hero-title"
+      style="--enter-delay:70ms"
+    >
+      Вакансии<br/>
+      по контракту
+    </h1>
 
-      <article class="vacancy-card reveal">
-        <div class="vacancy-cover vacancy-cover--photo vacancy-cover--laborer"><img alt="Разгрузка строительных материалов" decoding="async" loading="lazy" src="assets/images/vacancy-laborer.webp"/></div>
-        <div class="vacancy-body">
-<h3><a aria-label="Подробнее о вакансии: Разнорабочий" data-job="laborer" href="#job-modal">Разнорабочий</a></h3>
-          <p class="vacancy-salary">от 230 000 ₽ в месяц</p><p class="vacancy-summary">Разнорабочий на окопы, погрузка и разгрузка, МТО, стройка. Можно без опыта.</p>
-          <button class="vacancy-link" aria-label="Оставить заявку: Разнорабочий" data-apply-job="laborer" type="button">Оставить заявку <svg><use href="#i-arrow"></use></svg></button>
-        </div>
-      </article>
+    <p
+      class="hero-lead hero-enter"
+      style="--enter-delay:140ms"
+    >
+      Информация о специальностях и условиях
+    </p>
 
-      <article class="vacancy-card reveal">
-        <div class="vacancy-cover vacancy-cover--photo vacancy-cover--rembat"><img alt="Ремонт техники в мастерской" decoding="async" loading="lazy" src="assets/images/vacancy-rembat.webp"/></div>
-        <div class="vacancy-body">
-<h3><a aria-label="Подробнее о вакансии: Рембат — механики и слесари" data-job="rembat" href="#job-modal">Рембат:<br/>механики / слесари</a></h3>
-          <p class="vacancy-salary">от 280 000 ₽ в месяц</p><p class="vacancy-summary">Ремонт и обслуживание механизированной техники. Разбор техники. Требуется опыт.</p>
-          <button class="vacancy-link" aria-label="Оставить заявку: Рембат — механики и слесари" data-apply-job="rembat" type="button">Оставить заявку <svg><use href="#i-arrow"></use></svg></button>
-        </div>
-      </article>
+    <div
+      aria-label="Расчётный ориентир суммы за первый год"
+      class="annual-amount hero-enter"
+      style="--enter-delay:210ms"
+    >
 
-      <article class="vacancy-card reveal">
-        <div class="vacancy-cover vacancy-cover--photo vacancy-cover--welder"><img alt="Сварочные работы" decoding="async" loading="lazy" src="assets/images/vacancy-welder.webp"/></div>
-        <div class="vacancy-body">
-<h3><a aria-label="Подробнее о вакансии: Сварщик" data-job="welder" href="#job-modal">Сварщик</a></h3>
-          <p class="vacancy-salary">от 280 000 ₽ в месяц</p><p class="vacancy-summary">Сварочные работы на объектах и технике. От 2 разряда.</p>
-          <button class="vacancy-link" aria-label="Оставить заявку: Сварщик" data-apply-job="welder" type="button">Оставить заявку <svg><use href="#i-arrow"></use></svg></button>
-        </div>
-      </article>
+      <span class="annual-amount__label">
+        Расчётная сумма за первый год
+      </span>
 
-      <article class="vacancy-card reveal">
-        <div class="vacancy-cover vacancy-cover--photo vacancy-cover--tanker"><img alt="Военный бензовоз" decoding="async" loading="lazy" src="assets/images/vacancy-tanker.webp"/></div>
-        <div class="vacancy-body">
-<h3><a aria-label="Подробнее о вакансии: Водитель бензовоза" data-job="tanker" href="#job-modal">Водитель<br/>бензовоза</a></h3>
-          <p class="vacancy-salary">от 300 000 ₽ в месяц</p><p class="vacancy-summary">Работа на служебном транспорте, водители снабжения на бензовоз и водовоз. Перевозки и сопровождение грузов. Нужны права выбранной категории.</p>
-          <button class="vacancy-link" aria-label="Оставить заявку: Водитель бензовоза" data-apply-job="tanker" type="button">Оставить заявку <svg><use href="#i-arrow"></use></svg></button>
-        </div>
-      </article>
+      <strong>
+        до 6 000 000 ₽
+        <span>в год</span>
+      </strong>
 
-      <article class="vacancy-card reveal">
-        <div class="vacancy-cover vacancy-cover--photo vacancy-cover--vohr"><img alt="Военизированная охрана объекта" decoding="async" loading="lazy" src="assets/images/vacancy-vohr.webp"/></div>
-        <div class="vacancy-body">
-<h3><a aria-label="Подробнее о вакансии: Военизированная охрана ВОХР" data-job="vohr" href="#job-modal">Военизированная<br/>охрана (ВОХР)</a></h3>
-          <p class="vacancy-salary">от 280 000 ₽ в месяц</p><p class="vacancy-summary">Охрана особо важных государственных и стратегических объектов, грузов, зданий и территорий. Можно без опыта.</p>
-          <button class="vacancy-link" aria-label="Оставить заявку: Военизированная охрана ВОХР" data-apply-job="vohr" type="button">Оставить заявку <svg><use href="#i-arrow"></use></svg></button>
-        </div>
-      </article>
-
-      <article class="vacancy-card reveal">
-        <div class="vacancy-cover vacancy-cover--photo vacancy-cover--uav"><img alt="Оператор беспилотного летательного аппарата" decoding="async" loading="lazy" src="assets/images/vacancy-uav.webp"/></div>
-        <div class="vacancy-body">
-<h3><a aria-label="Подробнее о вакансии: Оператор БПЛА" data-job="uav" href="#job-modal">Оператор БПЛА</a></h3>
-          <p class="vacancy-salary">от 300 000 ₽ в месяц</p><p class="vacancy-summary">Оператор БПЛА, с обучением. Можно без опыта, но желателен.</p>
-          <button class="vacancy-link" aria-label="Оставить заявку: Оператор БПЛА" data-apply-job="uav" type="button">Оставить заявку <svg><use href="#i-arrow"></use></svg></button>
-        </div>
-      </article>
-
-      <article class="vacancy-card reveal">
-        <div class="vacancy-cover vacancy-cover--photo vacancy-cover--reb"><img alt="Специалист радиоэлектронного оборудования" decoding="async" loading="lazy" src="assets/images/vacancy-reb.webp"/></div>
-        <div class="vacancy-body">
-<h3><a aria-label="Подробнее о вакансии: Специалист РЭБ" data-job="reb" href="#job-modal">Специалист РЭБ</a></h3>
-          <p class="vacancy-salary">от 280 000 ₽ в месяц</p><p class="vacancy-summary">Подавление связи, борьба с дронами, защита техники, радиоразведка. Требуется опыт.</p>
-          <button class="vacancy-link" aria-label="Оставить заявку: Специалист РЭБ" data-apply-job="reb" type="button">Оставить заявку <svg><use href="#i-arrow"></use></svg></button>
-        </div>
-      </article>
-
-      <article class="vacancy-card reveal">
-        <div class="vacancy-cover vacancy-cover--photo vacancy-cover--electrician"><img alt="Работа с электрическим оборудованием" decoding="async" loading="lazy" src="assets/images/vacancy-electrician.webp"/></div>
-        <div class="vacancy-body">
-<h3><a aria-label="Подробнее о вакансии: Электрик" data-job="electrician" href="#job-modal">Электрик</a></h3>
-          <p class="vacancy-salary">от 250 000 ₽ в месяц</p><p class="vacancy-summary">Обслуживание электросетей и техники. Требуется опыт.</p>
-          <button class="vacancy-link" aria-label="Оставить заявку: Электрик" data-apply-job="electrician" type="button">Оставить заявку <svg><use href="#i-arrow"></use></svg></button>
-        </div>
-      </article>
+      <span class="annual-amount__detail">
+        Сумма зависит от региона, должности и действующих условий
+      </span>
 
     </div>
 
-    <p class="section-note reveal">Наличие вакансий, требования, размер выплат и условия необходимо уточнять перед оформлением обращения.</p>
+    <div
+      class="hero-bottom hero-enter"
+      style="--enter-delay:420ms"
+    >
+
+      <button
+        class="button button--green button--hero"
+        data-open-contact=""
+        type="button"
+      >
+        <svg><use href="#i-message"></use></svg>
+
+        <span>
+          Оставить заявку
+        </span>
+
+        <svg class="button-arrow">
+          <use href="#i-arrow"></use>
+        </svg>
+      </button>
+
+      <p>
+        Сумма приведена как ориентир по исходным данным проекта,
+        не гарантирована и требует проверки по конкретной вакансии
+        и региону.
+      </p>
+
+    </div>
+
   </div>
+
 </section>
 
-<section aria-labelledby="payments-title" class="section payments-section" id="payments">
-<div class="container payments-layout">
-<div class="reveal"><span class="section-kicker section-kicker--light">СВЕДЕНИЯ ОБ УСЛОВИЯХ</span><h2 id="payments-title">Из чего складывается расчёт</h2><p>Размер единовременной выплаты зависит от региона и действующих программ. Ежемесячное содержание зависит от должности и других применимых условий.</p><button class="button button--outline" data-open-contact="" type="button">Оставить заявку <svg><use href="#i-arrow"></use></svg></button></div>
-<div class="payment-facts reveal">
-<div><span class="fact-number">01</span><div><h3>Единовременная выплата</h3><p>Перед публикацией необходимо проверить федеральную и региональную составляющие, основания и порядок получения.</p></div></div>
-<div><span class="fact-number">02</span><div><h3>Ежемесячное содержание</h3><p>Итог зависит от конкретной должности и условий. Указанное значение используется в примере расчёта.</p></div></div>
-<div><span class="fact-number">03</span><div><h3>Сумма за первый год</h3><p>Арифметический пример не является гарантией выплат каждому заявителю.</p></div></div>
-</div>
-</div>
-</section>
 
-<section aria-labelledby="steps-title" class="section steps-section" id="steps">
-<div class="container"><div class="section-heading reveal"><div><span class="section-kicker">ПОРЯДОК ОБРАЩЕНИЯ</span><h2 id="steps-title">Как получить информацию</h2><p>Три понятных шага — без лишних действий.</p></div></div>
-<div class="steps-grid">
-<article class="step-card reveal"><span class="step-num">01</span><span class="step-icon"><svg><use href="#i-file"></use></svg></span><h3>Оставьте обращение</h3><p>Заполните форму и укажите интересующее направление.</p></article>
-<article class="step-card reveal"><span class="step-num">02</span><span class="step-icon"><svg><use href="#i-phone"></use></svg></span><h3>Получите консультацию</h3><p>Уточните актуальные вакансии, требования и условия.</p></article>
-<article class="step-card reveal"><span class="step-num">03</span><span class="step-icon"><svg><use href="#i-check"></use></svg></span><h3>Уточните детали</h3><p>Получите сведения о дальнейших действиях по выбранной вакансии.</p></article>
-</div>
-</div>
-</section>
+<section
+  aria-labelledby="vacancies-title"
+  class="section section--light vacancies-section"
+  id="vacancies"
+>
 
-<section aria-labelledby="faq-title" class="section section--light faq-section" id="faq">
-  <div class="container">
-    <div class="section-heading reveal">
-      <div>
-        <span class="section-kicker">ВОПРОСЫ И ОТВЕТЫ</span>
-        <h2 id="faq-title">Ответы на частые вопросы</h2>
-        <p>Основные условия и информация перед обращением.</p>
-      </div>
-    </div>
+<div class="container">
 
-    <div class="faq-grid reveal">
+<div class="section-heading reveal">
 
-      <details class="faq-item">
-        <summary>Какое денежное довольствие предусмотрено? <svg><use href="#i-plus"></use></svg></summary>
-        <p>От 210 000 ₽ в месяц. Дополнительные выплаты и надбавки могут зависеть от выполняемых задач, должности и условий службы. Размер единовременной региональной выплаты при заключении контракта зависит от региона и действующих программ.</p>
-      </details>
+<div>
 
-      <details class="faq-item">
-        <summary>Какие условия предусмотрены по жилью и ипотеке? <svg><use href="#i-plus"></use></svg></summary>
-        <p>Для военнослужащих могут действовать предусмотренные законом жилищные программы и механизмы военной ипотеки. Конкретные условия зависят от оснований, срока службы и действующих правил.</p>
-      </details>
+<span class="section-kicker">
+НАПРАВЛЕНИЯ
+</span>
 
-      <details class="faq-item">
-        <summary>Когда можно получить отпуск? <svg><use href="#i-plus"></use></svg></summary>
-        <p>Порядок и продолжительность отпуска зависят от условий службы, должности и применимых нормативных требований. Актуальные условия необходимо уточнить перед заключением контракта.</p>
-      </details>
+<h2 id="vacancies-title">
+Выберите специальность
+</h2>
 
-      <details class="faq-item">
-        <summary>Какая поддержка предусмотрена для семьи? <svg><use href="#i-plus"></use></svg></summary>
-        <p>Могут действовать федеральные и региональные льготы, социальные гарантии и меры поддержки военнослужащих и членов их семей. Конкретный перечень зависит от региона и оснований предоставления.</p>
-      </details>
-
-      <details class="faq-item">
-        <summary>Как учитываются пенсия и выслуга? <svg><use href="#i-plus"></use></svg></summary>
-        <p>Для военнослужащих предусмотрено военное пенсионное обеспечение. Порядок исчисления выслуги зависит от характера и условий прохождения службы.</p>
-      </details>
-
-      <details class="faq-item">
-        <summary>Обязательно ли иметь опыт работы? <svg><use href="#i-plus"></use></svg></summary>
-        <p>Опыт работы требуется не для всех вакансий. Если у вас есть профильный опыт, образование, удостоверения, водительские права, рабочие квалификации или другие подтверждающие документы, сообщите об этом при обращении.</p>
-      </details>
-
-      <details class="faq-item">
-        <summary>Что делать, если нет необходимой квалификации? <svg><use href="#i-plus"></use></svg></summary>
-        <p>Для отдельных направлений может быть предусмотрена подготовка и обучение перед назначением на должность. Возможность обучения необходимо уточнять по конкретной вакансии.</p>
-      </details>
-
-      <details class="faq-item">
-        <summary>Можно ли получить дополнительные водительские категории? <svg><use href="#i-plus"></use></svg></summary>
-        <p>В зависимости от выбранного направления может быть предусмотрена возможность дополнительной подготовки и получения необходимых водительских категорий. Условия уточняются индивидуально.</p>
-      </details>
-
-      <details class="faq-item">
-        <summary>Что происходит на период обучения? <svg><use href="#i-plus"></use></svg></summary>
-        <p>Условия обучения, продолжительность подготовки и денежного обеспечения необходимо уточнять применительно к конкретной должности и месту прохождения службы.</p>
-      </details>
-
-      <details class="faq-item">
-        <summary>Какие документы потребуются? <svg><use href="#i-plus"></use></svg></summary>
-        <p>При обращении могут потребоваться паспорт, сведения о регистрации, ИНН, а также имеющиеся документы об образовании, квалификации, водительских категориях и опыте работы.</p>
-        <p>Точный перечень документов следует уточнить у специалиста перед передачей персональных данных и документов.</p>
-      </details>
-
-      <details class="faq-item">
-        <summary>У меня есть воинское звание. Можно ли оставить заявку? <svg><use href="#i-plus"></use></svg></summary>
-        <p>Возможность рассмотрения зависит от конкретного воинского или специального звания, выбранного направления и требований к должности. Укажите звание при обращении, чтобы специалист мог проверить доступные варианты.</p>
-      </details>
-
-      <details class="faq-item">
-        <summary>Можно ли выбрать конкретную вакансию? <svg><use href="#i-plus"></use></svg></summary>
-        <p>Да. Выберите интересующую вакансию на сайте и оставьте заявку. При обращении сообщите о своих навыках, опыте, квалификации и пожеланиях по должности.</p>
-        <p>Если нужного направления нет среди представленных вакансий, сообщите об этом специалисту — возможность подбора другой должности рассматривается отдельно.</p>
-      </details>
-
-      <details class="faq-item">
-        <summary>Есть ли возрастные ограничения? <svg><use href="#i-plus"></use></svg></summary>
-        <p>На сайте принимаются обращения кандидатов в возрасте от 18 до 64 лет. Дополнительные требования могут зависеть от конкретной должности и условий оформления.</p>
-      </details>
-
-    </div>
-  </div>
-</section>
-
-<section aria-labelledby="contacts-title" class="section contact-section" id="contacts">
-<div class="container contact-layout reveal">
-<div class="contact-promo"><span class="section-kicker section-kicker--light">КОНТАКТЫ</span><h2>Есть вопросы?<br/>Оставьте обращение</h2><p>Укажите ФИО, телефон и возраст, чтобы получить актуальные сведения об интересующей вакансии.</p><div class="contact-promo-icon"><svg><use href="#i-message"></use></svg></div></div>
-<div class="contact-panel"><span class="section-kicker">ФОРМА ОБРАЩЕНИЯ</span><h2 id="contacts-title">Оставить заявку</h2><p class="contact-subhead">Поля, отмеченные звёздочкой, обязательны.</p>
-<form class="contact-form" id="main-form" novalidate=""><div class="form-grid">
-<label>ФИО *<input autocomplete="name" maxlength="140" minlength="5" name="full_name" placeholder="Иванов Иван Иванович" required="" type="text"/></label>
-<label>Номер телефона *<input autocomplete="tel" inputmode="tel" name="phone" placeholder="+7 (999) 999-99-99" required="" type="tel"/></label>
-<label class="age-field">Возраст *<input aria-describedby="age-note-main-form" inputmode="numeric" max="64" min="18" name="age" placeholder="Полных лет" required="" step="1" type="number"/><small class="field-note" id="age-note-main-form">Возраст до 64 лет включительно. Условия уточняются по конкретной вакансии.</small></label>
-</div>
-<input name="vacancy" type="hidden" value=""/><label class="hp-field" aria-hidden="true" tabindex="-1">Ваш сайт<input autocomplete="off" name="website" tabindex="-1" type="text"/></label>
-<label class="consent">
-  <input name="consent" required="" type="checkbox"/>
-  <span>
-    Я даю согласие на обработку персональных данных в соответствии с
-    <a href="consent.html" rel="noopener" target="_blank">Согласием на обработку персональных данных</a> *
-  </span>
-</label>
-<button class="button button--green submit-button" type="submit">Оставить заявку <svg><use href="#i-arrow"></use></svg></button>
-<p aria-live="polite" class="form-status" role="status"></p></form>
-<p class="form-caption">
-  До отправки заявки ознакомьтесь с
-  <a href="privacy.html" rel="noopener" target="_blank">Политикой в отношении обработки персональных данных</a>.
+<p>
+Ознакомьтесь с доступными направлениями и оставьте заявку
+на интересующую вакансию.
 </p>
+
 </div>
+
 </div>
+
+
+<div class="vacancy-grid">
+
+
+<article class="vacancy-card reveal">
+
+<div class="vacancy-cover vacancy-cover--photo vacancy-cover--driver">
+
+<img
+alt="Военные грузовые автомобили"
+decoding="async"
+loading="lazy"
+src="assets/images/vacancy-driver.webp"
+/>
+
+</div>
+
+<div class="vacancy-body">
+
+<h3>
+
+<a
+aria-label="Подробнее о вакансии: Водители B, C, D, E"
+data-job="driver"
+href="#job-modal"
+>
+Водители<br/>
+B, C, D, E
+</a>
+
+</h3>
+
+<p class="vacancy-salary">
+от 300 000 ₽ в месяц
+</p>
+
+<p class="vacancy-summary">
+Работа на служебном транспорте: УАЗ Патриот, УРАЛ, КАМАЗ.
+Перевозки и сопровождение грузов.
+Нужны права выбранной категории.
+</p>
+
+<button
+class="vacancy-link"
+aria-label="Оставить заявку: Водители B, C, D, E"
+data-apply-job="driver"
+type="button"
+>
+Оставить заявку
+<svg><use href="#i-arrow"></use></svg>
+</button>
+
+</div>
+
+</article>
+
+
+<article class="vacancy-card reveal">
+
+<div class="vacancy-cover vacancy-cover--photo vacancy-cover--security">
+
+<img
+alt="Охрана объекта инфраструктуры"
+decoding="async"
+loading="lazy"
+src="assets/images/vacancy-security.webp"
+/>
+
+</div>
+
+<div class="vacancy-body">
+
+<h3>
+
+<a
+aria-label="Подробнее о вакансии: Охрана объектов инфраструктуры"
+data-job="security"
+href="#job-modal"
+>
+Охрана объектов<br/>
+инфраструктуры
+</a>
+
+</h3>
+
+<p class="vacancy-salary">
+от 280 000 ₽ в месяц
+</p>
+
+<p class="vacancy-summary">
+Охрана инфраструктурных и гражданских объектов в тылу.
+Сопровождение грузов.
+Можно без опыта.
+</p>
+
+<button
+class="vacancy-link"
+aria-label="Оставить заявку: Охрана объектов инфраструктуры"
+data-apply-job="security"
+type="button"
+>
+Оставить заявку
+<svg><use href="#i-arrow"></use></svg>
+</button>
+
+</div>
+
+</article>
+
+
+<article class="vacancy-card reveal">
+
+<div class="vacancy-cover vacancy-cover--photo vacancy-cover--laborer">
+
+<img
+alt="Разгрузка строительных материалов"
+decoding="async"
+loading="lazy"
+src="assets/images/vacancy-laborer.webp"
+/>
+
+</div>
+
+<div class="vacancy-body">
+
+<h3>
+
+<a
+aria-label="Подробнее о вакансии: Разнорабочий"
+data-job="laborer"
+href="#job-modal"
+>
+Разнорабочий
+</a>
+
+</h3>
+
+<p class="vacancy-salary">
+от 230 000 ₽ в месяц
+</p>
+
+<p class="vacancy-summary">
+Разнорабочий на окопы, погрузка и разгрузка,
+МТО, стройка.
+Можно без опыта.
+</p>
+
+<button
+class="vacancy-link"
+aria-label="Оставить заявку: Разнорабочий"
+data-apply-job="laborer"
+type="button"
+>
+Оставить заявку
+<svg><use href="#i-arrow"></use></svg>
+</button>
+
+</div>
+
+</article>
+
+
+<article class="vacancy-card reveal">
+
+<div class="vacancy-cover vacancy-cover--photo vacancy-cover--rembat">
+
+<img
+alt="Ремонт техники в мастерской"
+decoding="async"
+loading="lazy"
+src="assets/images/vacancy-rembat.webp"
+/>
+
+</div>
+
+<div class="vacancy-body">
+
+<h3>
+
+<a
+aria-label="Подробнее о вакансии: Рембат — механики и слесари"
+data-job="rembat"
+href="#job-modal"
+>
+Рембат:<br/>
+механики / слесари
+</a>
+
+</h3>
+
+<p class="vacancy-salary">
+от 280 000 ₽ в месяц
+</p>
+
+<p class="vacancy-summary">
+Ремонт и обслуживание механизированной техники.
+Разбор техники.
+Требуется опыт.
+</p>
+
+<button
+class="vacancy-link"
+aria-label="Оставить заявку: Рембат — механики и слесари"
+data-apply-job="rembat"
+type="button"
+>
+Оставить заявку
+<svg><use href="#i-arrow"></use></svg>
+</button>
+
+</div>
+
+</article>
+
+
+<article class="vacancy-card reveal">
+
+<div class="vacancy-cover vacancy-cover--photo vacancy-cover--welder">
+
+<img
+alt="Сварочные работы"
+decoding="async"
+loading="lazy"
+src="assets/images/vacancy-welder.webp"
+/>
+
+</div>
+
+<div class="vacancy-body">
+
+<h3>
+
+<a
+aria-label="Подробнее о вакансии: Сварщик"
+data-job="welder"
+href="#job-modal"
+>
+Сварщик
+</a>
+
+</h3>
+
+<p class="vacancy-salary">
+от 280 000 ₽ в месяц
+</p>
+
+<p class="vacancy-summary">
+Сварочные работы на объектах и технике.
+От 2 разряда.
+</p>
+
+<button
+class="vacancy-link"
+aria-label="Оставить заявку: Сварщик"
+data-apply-job="welder"
+type="button"
+>
+Оставить заявку
+<svg><use href="#i-arrow"></use></svg>
+</button>
+
+</div>
+
+</article>
+
+
+<article class="vacancy-card reveal">
+
+<div class="vacancy-cover vacancy-cover--photo vacancy-cover--tanker">
+
+<img
+alt="Военный бензовоз"
+decoding="async"
+loading="lazy"
+src="assets/images/vacancy-tanker.webp"
+/>
+
+</div>
+
+<div class="vacancy-body">
+
+<h3>
+
+<a
+aria-label="Подробнее о вакансии: Водитель бензовоза"
+data-job="tanker"
+href="#job-modal"
+>
+Водитель<br/>
+бензовоза
+</a>
+
+</h3>
+
+<p class="vacancy-salary">
+от 300 000 ₽ в месяц
+</p>
+
+<p class="vacancy-summary">
+Работа на служебном транспорте,
+водители снабжения на бензовоз и водовоз.
+Перевозки и сопровождение грузов.
+Нужны права выбранной категории.
+</p>
+
+<button
+class="vacancy-link"
+aria-label="Оставить заявку: Водитель бензовоза"
+data-apply-job="tanker"
+type="button"
+>
+Оставить заявку
+<svg><use href="#i-arrow"></use></svg>
+</button>
+
+</div>
+
+</article>
+
+
+<article class="vacancy-card reveal">
+
+<div class="vacancy-cover vacancy-cover--photo vacancy-cover--vohr">
+
+<img
+alt="Военизированная охрана объекта"
+decoding="async"
+loading="lazy"
+src="assets/images/vacancy-vohr.webp"
+/>
+
+</div>
+
+<div class="vacancy-body">
+
+<h3>
+
+<a
+aria-label="Подробнее о вакансии: Военизированная охрана ВОХР"
+data-job="vohr"
+href="#job-modal"
+>
+Военизированная<br/>
+охрана (ВОХР)
+</a>
+
+</h3>
+
+<p class="vacancy-salary">
+от 280 000 ₽ в месяц
+</p>
+
+<p class="vacancy-summary">
+Охрана особо важных государственных и стратегических объектов,
+грузов, зданий и территорий.
+Можно без опыта.
+</p>
+
+<button
+class="vacancy-link"
+aria-label="Оставить заявку: Военизированная охрана ВОХР"
+data-apply-job="vohr"
+type="button"
+>
+Оставить заявку
+<svg><use href="#i-arrow"></use></svg>
+</button>
+
+</div>
+
+</article>
+
+
+<article class="vacancy-card reveal">
+
+<div class="vacancy-cover vacancy-cover--photo vacancy-cover--uav">
+
+<img
+alt="Оператор беспилотного летательного аппарата"
+decoding="async"
+loading="lazy"
+src="assets/images/vacancy-uav.webp"
+/>
+
+</div>
+
+<div class="vacancy-body">
+
+<h3>
+
+<a
+aria-label="Подробнее о вакансии: Оператор БПЛА"
+data-job="uav"
+href="#job-modal"
+>
+Оператор БПЛА
+</a>
+
+</h3>
+
+<p class="vacancy-salary">
+от 300 000 ₽ в месяц
+</p>
+
+<p class="vacancy-summary">
+Оператор БПЛА, с обучением.
+Можно без опыта, но желателен.
+</p>
+
+<button
+class="vacancy-link"
+aria-label="Оставить заявку: Оператор БПЛА"
+data-apply-job="uav"
+type="button"
+>
+Оставить заявку
+<svg><use href="#i-arrow"></use></svg>
+</button>
+
+</div>
+
+</article>
+
+
+<article class="vacancy-card reveal">
+
+<div class="vacancy-cover vacancy-cover--photo vacancy-cover--reb">
+
+<img
+alt="Специалист радиоэлектронного оборудования"
+decoding="async"
+loading="lazy"
+src="assets/images/vacancy-reb.webp"
+/>
+
+</div>
+
+<div class="vacancy-body">
+
+<h3>
+
+<a
+aria-label="Подробнее о вакансии: Специалист РЭБ"
+data-job="reb"
+href="#job-modal"
+>
+Специалист РЭБ
+</a>
+
+</h3>
+
+<p class="vacancy-salary">
+от 280 000 ₽ в месяц
+</p>
+
+<p class="vacancy-summary">
+Подавление связи, борьба с дронами,
+защита техники, радиоразведка.
+Требуется опыт.
+</p>
+
+<button
+class="vacancy-link"
+aria-label="Оставить заявку: Специалист РЭБ"
+data-apply-job="reb"
+type="button"
+>
+Оставить заявку
+<svg><use href="#i-arrow"></use></svg>
+</button>
+
+</div>
+
+</article>
+
+
+<article class="vacancy-card reveal">
+
+<div class="vacancy-cover vacancy-cover--photo vacancy-cover--electrician">
+
+<img
+alt="Работа с электрическим оборудованием"
+decoding="async"
+loading="lazy"
+src="assets/images/vacancy-electrician.webp"
+/>
+
+</div>
+
+<div class="vacancy-body">
+
+<h3>
+
+<a
+aria-label="Подробнее о вакансии: Электрик"
+data-job="electrician"
+href="#job-modal"
+>
+Электрик
+</a>
+
+</h3>
+
+<p class="vacancy-salary">
+от 250 000 ₽ в месяц
+</p>
+
+<p class="vacancy-summary">
+Обслуживание электросетей и техники.
+Требуется опыт.
+</p>
+
+<button
+class="vacancy-link"
+aria-label="Оставить заявку: Электрик"
+data-apply-job="electrician"
+type="button"
+>
+Оставить заявку
+<svg><use href="#i-arrow"></use></svg>
+</button>
+
+</div>
+
+</article>
+
+
+</div>
+
+<p class="section-note reveal">
+Наличие вакансий, требования, размер выплат и условия
+необходимо уточнять перед оформлением обращения.
+</p>
+
+</div>
+
 </section>
+
+
+<section
+aria-labelledby="payments-title"
+class="section payments-section"
+id="payments"
+>
+
+<div class="container payments-layout">
+
+<div class="reveal">
+
+<span class="section-kicker section-kicker--light">
+СВЕДЕНИЯ ОБ УСЛОВИЯХ
+</span>
+
+<h2 id="payments-title">
+Из чего складывается расчёт
+</h2>
+
+<p>
+Размер единовременной выплаты зависит от региона
+и действующих программ.
+Ежемесячное содержание зависит от должности
+и других применимых условий.
+</p>
+
+<button
+class="button button--outline"
+data-open-contact=""
+type="button"
+>
+Оставить заявку
+<svg><use href="#i-arrow"></use></svg>
+</button>
+
+</div>
+
+
+<div class="payment-facts reveal">
+
+<div>
+
+<span class="fact-number">
+01
+</span>
+
+<div>
+
+<h3>
+Единовременная выплата
+</h3>
+
+<p>
+Перед публикацией необходимо проверить федеральную
+и региональную составляющие, основания и порядок получения.
+</p>
+
+</div>
+
+</div>
+
+
+<div>
+
+<span class="fact-number">
+02
+</span>
+
+<div>
+
+<h3>
+Ежемесячное содержание
+</h3>
+
+<p>
+Итог зависит от конкретной должности и условий.
+Указанное значение используется в примере расчёта.
+</p>
+
+</div>
+
+</div>
+
+
+<div>
+
+<span class="fact-number">
+03
+</span>
+
+<div>
+
+<h3>
+Сумма за первый год
+</h3>
+
+<p>
+Арифметический пример не является гарантией выплат
+каждому заявителю.
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<section
+aria-labelledby="steps-title"
+class="section steps-section"
+id="steps"
+>
+
+<div class="container">
+
+<div class="section-heading reveal">
+
+<div>
+
+<span class="section-kicker">
+ПОРЯДОК ОБРАЩЕНИЯ
+</span>
+
+<h2 id="steps-title">
+Как получить информацию
+</h2>
+
+<p>
+Три понятных шага — без лишних действий.
+</p>
+
+</div>
+
+</div>
+
+
+<div class="steps-grid">
+
+<article class="step-card reveal">
+
+<span class="step-num">
+01
+</span>
+
+<span class="step-icon">
+<svg><use href="#i-file"></use></svg>
+</span>
+
+<h3>
+Оставьте обращение
+</h3>
+
+<p>
+Заполните форму и укажите интересующее направление.
+</p>
+
+</article>
+
+
+<article class="step-card reveal">
+
+<span class="step-num">
+02
+</span>
+
+<span class="step-icon">
+<svg><use href="#i-phone"></use></svg>
+</span>
+
+<h3>
+Получите консультацию
+</h3>
+
+<p>
+Уточните актуальные вакансии, требования и условия.
+</p>
+
+</article>
+
+
+<article class="step-card reveal">
+
+<span class="step-num">
+03
+</span>
+
+<span class="step-icon">
+<svg><use href="#i-check"></use></svg>
+</span>
+
+<h3>
+Уточните детали
+</h3>
+
+<p>
+Получите сведения о дальнейших действиях
+по выбранной вакансии.
+</p>
+
+</article>
+
+</div>
+
+</div>
+
+</section>
+
+
+<section
+aria-labelledby="faq-title"
+class="section section--light faq-section"
+id="faq"
+>
+
+<div class="container">
+
+<div class="section-heading reveal">
+
+<div>
+
+<span class="section-kicker">
+ВОПРОСЫ И ОТВЕТЫ
+</span>
+
+<h2 id="faq-title">
+Ответы на частые вопросы
+</h2>
+
+<p>
+Основные условия и информация перед обращением.
+</p>
+
+</div>
+
+</div>
+
+
+<div class="faq-grid reveal">
+
+
+<details class="faq-item">
+
+<summary>
+Какое денежное довольствие предусмотрено?
+<svg><use href="#i-plus"></use></svg>
+</summary>
+
+<p>
+От 210 000 ₽ в месяц.
+Дополнительные выплаты и надбавки могут зависеть
+от выполняемых задач, должности и условий службы.
+Размер единовременной региональной выплаты
+при заключении контракта зависит от региона
+и действующих программ.
+</p>
+
+</details>
+
+
+<details class="faq-item">
+
+<summary>
+Какие условия предусмотрены по жилью и ипотеке?
+<svg><use href="#i-plus"></use></svg>
+</summary>
+
+<p>
+Для военнослужащих могут действовать предусмотренные
+законом жилищные программы и механизмы военной ипотеки.
+Конкретные условия зависят от оснований,
+срока службы и действующих правил.
+</p>
+
+</details>
+
+
+<details class="faq-item">
+
+<summary>
+Когда можно получить отпуск?
+<svg><use href="#i-plus"></use></svg>
+</summary>
+
+<p>
+Порядок и продолжительность отпуска зависят
+от условий службы, должности и применимых нормативных требований.
+Актуальные условия необходимо уточнить
+перед заключением контракта.
+</p>
+
+</details>
+
+
+<details class="faq-item">
+
+<summary>
+Какая поддержка предусмотрена для семьи?
+<svg><use href="#i-plus"></use></svg>
+</summary>
+
+<p>
+Могут действовать федеральные и региональные льготы,
+социальные гарантии и меры поддержки военнослужащих
+и членов их семей.
+Конкретный перечень зависит от региона
+и оснований предоставления.
+</p>
+
+</details>
+
+
+<details class="faq-item">
+
+<summary>
+Как учитываются пенсия и выслуга?
+<svg><use href="#i-plus"></use></svg>
+</summary>
+
+<p>
+Для военнослужащих предусмотрено военное пенсионное обеспечение.
+Порядок исчисления выслуги зависит
+от характера и условий прохождения службы.
+</p>
+
+</details>
+
+
+<details class="faq-item">
+
+<summary>
+Обязательно ли иметь опыт работы?
+<svg><use href="#i-plus"></use></svg>
+</summary>
+
+<p>
+Опыт работы требуется не для всех вакансий.
+Если у вас есть профильный опыт, образование,
+удостоверения, водительские права,
+рабочие квалификации или другие подтверждающие документы,
+сообщите об этом при обращении.
+</p>
+
+</details>
+
+
+<details class="faq-item">
+
+<summary>
+Что делать, если нет необходимой квалификации?
+<svg><use href="#i-plus"></use></svg>
+</summary>
+
+<p>
+Для отдельных направлений может быть предусмотрена
+подготовка и обучение перед назначением на должность.
+Возможность обучения необходимо уточнять
+по конкретной вакансии.
+</p>
+
+</details>
+
+
+<details class="faq-item">
+
+<summary>
+Можно ли получить дополнительные водительские категории?
+<svg><use href="#i-plus"></use></svg>
+</summary>
+
+<p>
+В зависимости от выбранного направления
+может быть предусмотрена возможность дополнительной подготовки
+и получения необходимых водительских категорий.
+Условия уточняются индивидуально.
+</p>
+
+</details>
+
+
+<details class="faq-item">
+
+<summary>
+Что происходит на период обучения?
+<svg><use href="#i-plus"></use></svg>
+</summary>
+
+<p>
+Условия обучения, продолжительность подготовки
+и денежного обеспечения необходимо уточнять
+применительно к конкретной должности
+и месту прохождения службы.
+</p>
+
+</details>
+
+
+<details class="faq-item">
+
+<summary>
+Какие документы потребуются?
+<svg><use href="#i-plus"></use></svg>
+</summary>
+
+<p>
+При обращении могут потребоваться паспорт,
+сведения о регистрации, ИНН,
+а также имеющиеся документы об образовании,
+квалификации, водительских категориях и опыте работы.
+</p>
+
+<p>
+Точный перечень документов следует уточнить у специалиста
+перед передачей персональных данных и документов.
+</p>
+
+</details>
+
+
+<details class="faq-item">
+
+<summary>
+У меня есть воинское звание. Можно ли оставить заявку?
+<svg><use href="#i-plus"></use></svg>
+</summary>
+
+<p>
+Возможность рассмотрения зависит
+от конкретного воинского или специального звания,
+выбранного направления и требований к должности.
+Укажите звание при обращении,
+чтобы специалист мог проверить доступные варианты.
+</p>
+
+</details>
+
+
+<details class="faq-item">
+
+<summary>
+Можно ли выбрать конкретную вакансию?
+<svg><use href="#i-plus"></use></svg>
+</summary>
+
+<p>
+Да.
+Выберите интересующую вакансию на сайте и оставьте заявку.
+При обращении сообщите о своих навыках,
+опыте, квалификации и пожеланиях по должности.
+</p>
+
+<p>
+Если нужного направления нет среди представленных вакансий,
+сообщите об этом специалисту —
+возможность подбора другой должности рассматривается отдельно.
+</p>
+
+</details>
+
+
+<details class="faq-item">
+
+<summary>
+Есть ли возрастные ограничения?
+<svg><use href="#i-plus"></use></svg>
+</summary>
+
+<p>
+На сайте принимаются обращения кандидатов
+в возрасте от 18 до 64 лет.
+Дополнительные требования могут зависеть
+от конкретной должности и условий оформления.
+</p>
+
+</details>
+
+
+</div>
+
+</div>
+
+</section>
+
+
+<section
+aria-labelledby="contacts-title"
+class="section contact-section"
+id="contacts"
+>
+
+<div class="container contact-layout reveal">
+
+
+<div class="contact-promo">
+
+<span class="section-kicker section-kicker--light">
+КОНТАКТЫ
+</span>
+
+<h2>
+Есть вопросы?<br/>
+Оставьте обращение
+</h2>
+
+<p>
+Укажите ФИО, телефон и возраст,
+чтобы получить актуальные сведения
+об интересующей вакансии.
+</p>
+
+<div class="contact-promo-icon">
+<svg><use href="#i-message"></use></svg>
+</div>
+
+</div>
+
+
+<div class="contact-panel">
+
+<span class="section-kicker">
+ФОРМА ОБРАЩЕНИЯ
+</span>
+
+<h2 id="contacts-title">
+Оставить заявку
+</h2>
+
+<p class="contact-subhead">
+Поля, отмеченные звёздочкой, обязательны.
+</p>
+
+
+<form
+class="contact-form"
+id="main-form"
+novalidate=""
+>
+
+<div class="form-grid">
+
+<label>
+ФИО *
+
+<input
+autocomplete="name"
+maxlength="140"
+minlength="5"
+name="full_name"
+placeholder="Иванов Иван Иванович"
+required=""
+type="text"
+/>
+
+</label>
+
+
+<label>
+Номер телефона *
+
+<input
+autocomplete="tel"
+inputmode="tel"
+name="phone"
+placeholder="+7 (999) 999-99-99"
+required=""
+type="tel"
+/>
+
+</label>
+
+
+<label class="age-field">
+Возраст *
+
+<input
+aria-describedby="age-note-main-form"
+inputmode="numeric"
+max="64"
+min="18"
+name="age"
+placeholder="Полных лет"
+required=""
+step="1"
+type="number"
+/>
+
+<small
+class="field-note"
+id="age-note-main-form"
+>
+Возраст до 64 лет включительно.
+Условия уточняются по конкретной вакансии.
+</small>
+
+</label>
+
+</div>
+
+
+<input
+name="vacancy"
+type="hidden"
+value=""
+/>
+
+
+<label
+class="hp-field"
+aria-hidden="true"
+tabindex="-1"
+>
+Ваш сайт
+
+<input
+autocomplete="off"
+name="website"
+tabindex="-1"
+type="text"
+/>
+
+</label>
+
+
+<label class="consent">
+
+<input
+name="consent"
+required=""
+type="checkbox"
+/>
+
+<span>
+Я даю согласие на обработку персональных данных
+в соответствии с
+<a
+href="consent.html"
+rel="noopener"
+target="_blank"
+>
+Согласием на обработку персональных данных
+</a>
+*
+</span>
+
+</label>
+
+
+<button
+class="button button--green submit-button"
+type="submit"
+>
+Оставить заявку
+<svg><use href="#i-arrow"></use></svg>
+</button>
+
+
+<p
+aria-live="polite"
+class="form-status"
+role="status"
+></p>
+
+</form>
+
+
+<p class="form-caption">
+До отправки заявки ознакомьтесь с
+<a
+href="privacy.html"
+rel="noopener"
+target="_blank"
+>
+Политикой в отношении обработки персональных данных
+</a>.
+</p>
+
+
+</div>
+
+</div>
+
+</section>
+
 </main>
 
-<footer class="site-footer"><div class="container footer-inner"><a class="brand brand--footer" href="#top"><span class="brand-name">КОНТРАКТ<span class="brand-dot">.</span></span><span class="brand-caption">ИНФОРМАЦИЯ О ВАКАНСИЯХ</span></a><p>Информация о вакансиях и условиях. Актуальные сведения уточняются при обращении.</p><a href="privacy.html">Политика обработки персональных данных</a><a href="consent.html">Согласие на обработку персональных данных</a><a aria-label="Вернуться наверх" class="back-to-top" href="#top">↑</a></div></footer>
 
-<dialog aria-labelledby="modal-title" class="modal" id="contact-modal">
-<div class="modal-head"><div><span class="section-kicker">ОБРАТНАЯ СВЯЗЬ</span><h2 id="modal-title">Оставить заявку</h2></div><button aria-label="Закрыть" class="modal-close" type="button">×</button></div>
-<p class="modal-lead">Укажите ФИО, телефон и возраст. Менеджер сможет уточнить условия интересующей вакансии.</p>
-<p class="selected-vacancy" id="selected-vacancy" hidden>Выбрана вакансия: <strong id="selected-vacancy-name"></strong></p>
-<form class="contact-form" id="modal-form" novalidate=""><div class="form-grid">
-<label>ФИО *<input autocomplete="name" maxlength="140" minlength="5" name="full_name" placeholder="Иванов Иван Иванович" required="" type="text"/></label>
-<label>Номер телефона *<input autocomplete="tel" inputmode="tel" name="phone" placeholder="+7 (999) 999-99-99" required="" type="tel"/></label>
-<label class="age-field">Возраст *<input aria-describedby="age-note-modal-form" inputmode="numeric" max="64" min="18" name="age" placeholder="Полных лет" required="" step="1" type="number"/><small class="field-note" id="age-note-modal-form">Возраст до 64 лет включительно. Условия уточняются по конкретной вакансии.</small></label>
-</div>
-<input name="vacancy" type="hidden" value=""/><label class="hp-field" aria-hidden="true" tabindex="-1">Ваш сайт<input autocomplete="off" name="website" tabindex="-1" type="text"/></label>
-<label class="consent">
-  <input name="consent" required="" type="checkbox"/>
-  <span>
-    Я даю согласие на обработку персональных данных в соответствии с
-    <a href="consent.html" rel="noopener" target="_blank">Согласием на обработку персональных данных</a> *
-  </span>
-</label>
-<button class="button button--green submit-button" type="submit">Оставить заявку <svg><use href="#i-arrow"></use></svg></button>
-<p aria-live="polite" class="form-status" role="status"></p></form>
-<p class="form-caption">
-  До отправки заявки ознакомьтесь с
-  <a href="privacy.html" rel="noopener" target="_blank">Политикой в отношении обработки персональных данных</a>.
+<footer class="site-footer">
+
+<div class="container footer-inner">
+
+<a
+class="brand brand--footer"
+href="#top"
+>
+
+<span class="brand-name">
+КОНТРАКТ<span class="brand-dot">.</span>
+</span>
+
+<span class="brand-caption">
+ИНФОРМАЦИЯ О ВАКАНСИЯХ
+</span>
+
+</a>
+
+
+<p>
+Информация о вакансиях и условиях.
+Актуальные сведения уточняются при обращении.
 </p>
+
+
+<a href="privacy.html">
+Политика обработки персональных данных
+</a>
+
+
+<a href="consent.html">
+Согласие на обработку персональных данных
+</a>
+
+
+<button
+id="cookie-settings"
+type="button"
+class="cookie-settings-link"
+>
+Настройки cookie
+</button>
+
+
+<a
+aria-label="Вернуться наверх"
+class="back-to-top"
+href="#top"
+>
+↑
+</a>
+
+</div>
+
+</footer>
+
+
+<dialog
+aria-labelledby="modal-title"
+class="modal"
+id="contact-modal"
+>
+
+<div class="modal-head">
+
+<div>
+
+<span class="section-kicker">
+ОБРАТНАЯ СВЯЗЬ
+</span>
+
+<h2 id="modal-title">
+Оставить заявку
+</h2>
+
+</div>
+
+<button
+aria-label="Закрыть"
+class="modal-close"
+type="button"
+>
+×
+</button>
+
+</div>
+
+
+<p class="modal-lead">
+Укажите ФИО, телефон и возраст.
+Менеджер сможет уточнить условия интересующей вакансии.
+</p>
+
+
+<p
+class="selected-vacancy"
+id="selected-vacancy"
+hidden
+>
+Выбрана вакансия:
+<strong id="selected-vacancy-name"></strong>
+</p>
+
+
+<form
+class="contact-form"
+id="modal-form"
+novalidate=""
+>
+
+<div class="form-grid">
+
+
+<label>
+ФИО *
+
+<input
+autocomplete="name"
+maxlength="140"
+minlength="5"
+name="full_name"
+placeholder="Иванов Иван Иванович"
+required=""
+type="text"
+/>
+
+</label>
+
+
+<label>
+Номер телефона *
+
+<input
+autocomplete="tel"
+inputmode="tel"
+name="phone"
+placeholder="+7 (999) 999-99-99"
+required=""
+type="tel"
+/>
+
+</label>
+
+
+<label class="age-field">
+Возраст *
+
+<input
+aria-describedby="age-note-modal-form"
+inputmode="numeric"
+max="64"
+min="18"
+name="age"
+placeholder="Полных лет"
+required=""
+step="1"
+type="number"
+/>
+
+<small
+class="field-note"
+id="age-note-modal-form"
+>
+Возраст до 64 лет включительно.
+Условия уточняются по конкретной вакансии.
+</small>
+
+</label>
+
+</div>
+
+
+<input
+name="vacancy"
+type="hidden"
+value=""
+/>
+
+
+<label
+class="hp-field"
+aria-hidden="true"
+tabindex="-1"
+>
+Ваш сайт
+
+<input
+autocomplete="off"
+name="website"
+tabindex="-1"
+type="text"
+/>
+
+</label>
+
+
+<label class="consent">
+
+<input
+name="consent"
+required=""
+type="checkbox"
+/>
+
+<span>
+Я даю согласие на обработку персональных данных
+в соответствии с
+<a
+href="consent.html"
+rel="noopener"
+target="_blank"
+>
+Согласием на обработку персональных данных
+</a>
+*
+</span>
+
+</label>
+
+
+<button
+class="button button--green submit-button"
+type="submit"
+>
+Оставить заявку
+<svg><use href="#i-arrow"></use></svg>
+</button>
+
+
+<p
+aria-live="polite"
+class="form-status"
+role="status"
+></p>
+
+</form>
+
+
+<p class="form-caption">
+До отправки заявки ознакомьтесь с
+<a
+href="privacy.html"
+rel="noopener"
+target="_blank"
+>
+Политикой в отношении обработки персональных данных
+</a>.
+</p>
+
 </dialog>
 
-<dialog aria-labelledby="job-title" class="modal modal--job" id="job-modal">
-<div class="modal-head"><div><span class="section-kicker">НАПРАВЛЕНИЕ ВАКАНСИИ</span><h2 id="job-title"></h2></div><button aria-label="Закрыть" class="modal-close" type="button">×</button></div>
-<p class="modal-lead" id="job-description"></p>
-<div class="job-meta"><svg><use href="#i-file"></use></svg><p>Требования, доступность вакансии и актуальные условия уточняются перед оформлением обращения.</p></div>
-<button class="button button--green" id="job-contact" type="button">Оставить заявку <svg><use href="#i-arrow"></use></svg></button>
+
+<dialog
+aria-labelledby="job-title"
+class="modal modal--job"
+id="job-modal"
+>
+
+<div class="modal-head">
+
+<div>
+
+<span class="section-kicker">
+НАПРАВЛЕНИЕ ВАКАНСИИ
+</span>
+
+<h2 id="job-title"></h2>
+
+</div>
+
+<button
+aria-label="Закрыть"
+class="modal-close"
+type="button"
+>
+×
+</button>
+
+</div>
+
+
+<p
+class="modal-lead"
+id="job-description"
+></p>
+
+
+<div class="job-meta">
+
+<svg>
+<use href="#i-file"></use>
+</svg>
+
+<p>
+Требования, доступность вакансии и актуальные условия
+уточняются перед оформлением обращения.
+</p>
+
+</div>
+
+
+<button
+class="button button--green"
+id="job-contact"
+type="button"
+>
+Оставить заявку
+<svg><use href="#i-arrow"></use></svg>
+</button>
+
 </dialog>
+
+
+<!-- COOKIE CONSENT -->
+
+<div
+class="cookie-banner"
+id="cookie-banner"
+role="dialog"
+aria-live="polite"
+aria-label="Настройки файлов cookie"
+hidden
+>
+
+<div class="cookie-banner__content">
+
+
+<div class="cookie-banner__text">
+
+<strong>
+Мы используем файлы cookie
+</strong>
+
+<p>
+Сайт использует Яндекс Метрику для анализа посещаемости
+и эффективности работы сайта.
+Аналитика включается только с вашего согласия.
+Подробнее —
+<a
+href="privacy.html"
+target="_blank"
+rel="noopener"
+>
+в Политике обработки персональных данных
+</a>.
+</p>
+
+</div>
+
+
+<div class="cookie-banner__actions">
+
+<button
+class="cookie-button cookie-button--secondary"
+id="cookie-reject"
+type="button"
+>
+Отклонить аналитику
+</button>
+
+
+<button
+class="cookie-button cookie-button--accept"
+id="cookie-accept"
+type="button"
+>
+Принять
+</button>
+
+</div>
+
+
+</div>
+
+</div>
+
+
+<script>
+(function () {
+  'use strict';
+
+  const CONSENT_KEY = 'analytics_consent';
+
+  const banner =
+    document.getElementById('cookie-banner');
+
+  const acceptButton =
+    document.getElementById('cookie-accept');
+
+  const rejectButton =
+    document.getElementById('cookie-reject');
+
+  const settingsButton =
+    document.getElementById('cookie-settings');
+
+
+  function showBanner() {
+    if (banner) {
+      banner.hidden = false;
+    }
+  }
+
+
+  function hideBanner() {
+    if (banner) {
+      banner.hidden = true;
+    }
+  }
+
+
+  function saveConsent(value) {
+    try {
+
+      localStorage.setItem(
+        CONSENT_KEY,
+        value
+      );
+
+      return true;
+
+    } catch (error) {
+
+      console.warn(
+        'Не удалось сохранить настройки cookie:',
+        error
+      );
+
+      return false;
+    }
+  }
+
+
+  function readConsent() {
+    try {
+
+      return localStorage.getItem(
+        CONSENT_KEY
+      );
+
+    } catch (error) {
+
+      console.warn(
+        'Не удалось прочитать настройки cookie:',
+        error
+      );
+
+      return null;
+    }
+  }
+
+
+  function acceptAnalytics() {
+
+    saveConsent('accepted');
+
+    hideBanner();
+
+    if (
+      typeof window.startYandexMetrika === 'function'
+    ) {
+
+      window.startYandexMetrika();
+
+    }
+
+  }
+
+
+  function rejectAnalytics() {
+
+    saveConsent('rejected');
+
+    hideBanner();
+
+  }
+
+
+  function openSettings() {
+
+    showBanner();
+
+  }
+
+
+  const consent = readConsent();
+
+
+  if (consent === 'accepted') {
+
+    hideBanner();
+
+    if (
+      typeof window.startYandexMetrika === 'function'
+    ) {
+
+      window.startYandexMetrika();
+
+    }
+
+  } else if (consent === 'rejected') {
+
+    hideBanner();
+
+  } else {
+
+    showBanner();
+
+  }
+
+
+  if (acceptButton) {
+
+    acceptButton.addEventListener(
+      'click',
+      acceptAnalytics
+    );
+
+  }
+
+
+  if (rejectButton) {
+
+    rejectButton.addEventListener(
+      'click',
+      rejectAnalytics
+    );
+
+  }
+
+
+  if (settingsButton) {
+
+    settingsButton.addEventListener(
+      'click',
+      openSettings
+    );
+
+  }
+
+})();
+</script>
+
+<!-- /COOKIE CONSENT -->
 
 </body>
 </html>
