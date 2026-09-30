@@ -2,12 +2,12 @@
 
 /**
  * CONFIGURATION
- * Public HTTPS address of the Cloudflare Worker.
+ * Public HTTPS address of the n8n webhook.
  * No Telegram bot token or other private secrets belong in frontend code.
  */
 const SITE_CONFIG = Object.freeze({
   webhookUrl: 'https://n8n.vahta-podbor.ru/webhook/leads',
-  yandexMetricaId: null,
+  yandexMetricaId: 113226768,
 });
 
 const JOBS = Object.freeze({
@@ -110,7 +110,10 @@ function closeModal(dialog) {
 
 function eventGoal(goal) {
   const id = SITE_CONFIG.yandexMetricaId;
-  if (id && typeof window.ym === 'function') window.ym(id, 'reachGoal', goal);
+
+  if (id && typeof window.ym === 'function') {
+    window.ym(id, 'reachGoal', goal);
+  }
 }
 
 function openContact(vacancy = '') {
@@ -316,6 +319,7 @@ for (const form of document.querySelectorAll('.contact-form')) {
         'Демо: форма проверена, но данные не отправлены. Для реальных заявок необходимо подключить webhook.',
         'demo'
       );
+
       return;
     }
 
@@ -363,7 +367,7 @@ for (const form of document.querySelectorAll('.contact-form')) {
         'success'
       );
 
-      eventGoal('lead_sent');
+      eventGoal('lead_success');
 
       form.reset();
 
