@@ -319,7 +319,13 @@
 <label class="age-field">Возраст *<input aria-describedby="age-note-modal-form" inputmode="numeric" max="64" min="18" name="age" placeholder="Полных лет" required="" step="1" type="number"/><small class="field-note" id="age-note-modal-form">Возраст до 64 лет включительно. Условия уточняются по конкретной вакансии.</small></label>
 </div>
 <input name="vacancy" type="hidden" value=""/><label class="hp-field" aria-hidden="true" tabindex="-1">Ваш сайт<input autocomplete="off" name="website" tabindex="-1" type="text"/></label>
-<label class="consent"><input name="consent" required="" type="checkbox"/><span>Согласен(на) на обработку персональных данных согласно <a href="privacy.html" rel="noopener" target="_blank">политике конфиденциальности</a> *</span></label>
+<label class="consent">
+  <input name="consent" required="" type="checkbox"/>
+  <span>
+    Я даю согласие на обработку персональных данных в соответствии с
+    <a href="consent.html" rel="noopener" target="_blank">Согласием на обработку персональных данных</a> *
+  </span>
+</label>
 <button class="button button--green submit-button" type="submit">Оставить заявку <svg><use href="#i-arrow"></use></svg></button>
 <p aria-live="polite" class="form-status" role="status"></p></form>
 <p class="form-caption">Заявка отправляется через Cloudflare Worker в Telegram-группу менеджеров.</p>
